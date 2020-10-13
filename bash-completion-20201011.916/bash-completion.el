@@ -5,8 +5,8 @@
 ;; Author: Stephane Zermatten <szermatt@gmx.net>
 ;; Maintainer: Stephane Zermatten <szermatt@gmail.com>
 ;; Version: 3.1.0
-;; Package-Version: 20200823.851
-;; Package-Commit: d6c28d31327629ae19109b75f7fb738452d15861
+;; Package-Version: 20201011.916
+;; Package-Commit: 65e54c6f9c0ffebf94f7c505694bd249b9b53d32
 ;; Keywords: shell bash bash-completion
 ;; URL: http://github.com/szermatt/emacs-bash-completion
 ;; Package-Requires: ((emacs "24.3"))
@@ -598,14 +598,10 @@ functions adds single quotes around it and return the result."
              "'"))))
 
 (defun bash-completion--parse (comp-start comp-pos wordbreaks bash-major-version)
-  "Process a command line split into TOKENS that end at POS.
+  "Process a command from COMP-START to COMP-POS.
 
 WORDBREAK is the value of COMP_WORDBREAKS to use for this completion,
 usually taken from the current process.
-
-This function takes a list of tokens built by
-`bash-completion-tokenize' and returns the variables compgen
-function expect in an association list.
 
 Returns a completion struct."
   (let* ((all-tokens (bash-completion-tokenize
@@ -675,7 +671,7 @@ Return a sublist of TOKENS."
        (dolist (token tokens)
          (let* ((string (bash-completion-tokenize-get-str token))
                 (is-terminal
-                 (and (member string '(";" "&" "|" "&&" "||"))
+                 (and (member string '(";" "&" "|" "&&" "||" "\n"))
                       (let ((range (bash-completion-tokenize-get-range token)))
                         (= (- (cdr range) (car range))
                            (length string))))))
@@ -731,7 +727,8 @@ set using `bash-completion-tokenize-set-end'.
 Tokens should always be accessed using the functions specified above,
 never directly as they're likely to change as this code evolves.
 The current format of a token is '(string . (start . end))."
-  (let ((bash-completion-wordbreaks
+  (let ((tokens nil)
+        (bash-completion-wordbreaks
          (mapconcat 'char-to-string
                     (delq nil (mapcar
                                (lambda (c)
@@ -740,26 +737,36 @@ The current format of a token is '(string . (start . end))."
                     "")))
     (save-excursion
       (goto-char start)
-      (nreverse (bash-completion-tokenize-new-element end nil)))))
+      (while (progn (skip-chars-forward " \t\r" end)
+                    (< (point) end))
+        (setq tokens
+              (bash-completion-tokenize-new-element end tokens)))
+      (nreverse tokens))))
 
-(defun bash-completion-tokenize-new-element (end tokens)
-  "Tokenize the rest of the line until END and complete TOKENS.
+(defun bash-completion-tokenize-new-element (limit tokens)
+  "Tokenize an element from point, up until LIMIT and complete TOKENS.
 
 This function is meant to be called exclusively from
 `bash-completion-tokenize' and `bash-completion-tokenize-0'.
 
-This function expect the point to be at the start of a new
-element to be added to the list of tokens.
+This function expects the point to be at the start of a new
+element to be added to the list of tokens. It parses the line
+until the limit of that element or until LIMIT.
 
-Return TOKENS with new tokens found between the current point and
-END prepended to it."
-  (skip-chars-forward " \t\n\r" end)
-  (if (< (point) end)
-      (bash-completion-tokenize-0 end tokens
-                                  (list
-                                   (cons 'str "")
-                                   (cons 'range (cons (point) nil))))
-    tokens))
+It leaves the point at the position where parsing should
+continue.
+
+Return TOKENS with new tokens prepended."
+  (skip-chars-forward " \t\r" limit)
+  (if (eq ?\n (char-after))
+      (progn
+        (goto-char (1+ (point)))
+        (cons `((str . "\n") (range ,(point) . ,(1+ (point)))) tokens))
+    (bash-completion-tokenize-0
+     limit tokens
+     (list
+      (cons 'str "")
+      (cons 'range (cons (point) nil))))))
 
 (defun bash-completion-tokenize-0 (end tokens token)
   "Tokenize the rest of the token until END and add it into TOKENS.
@@ -798,7 +805,8 @@ the token to the list of token and calls
 `bash-completion-tokenize-new-element' to look for the next
 token.
 
-END specifies the point at which tokenization should stop.
+END specifies the point at which tokenization should stop, even
+if the token is not complete.
 
 QUOTE specifies the current quote.  It should be nil, ?' or ?\"
 
@@ -806,7 +814,8 @@ TOKENS is the list of tokens built so far in reverse order.
 
 TOKEN is the token currently being built.
 
-Return TOKENS with new tokens prepended to it."
+Sets the point at the position of the next token. Returns TOKENS
+with new tokens prepended to it."
   ;; parse the token elements at the current position and
   ;; append them
   (let ((local-start (point)))
@@ -843,8 +852,7 @@ Return TOKENS with new tokens prepended to it."
     (bash-completion-tokenize-set-end token)
     (when quote
       (push (cons 'quote quote) token))
-    (push token tokens)
-    (bash-completion-tokenize-new-element end tokens))))
+    (push token tokens))))
 
 (defun bash-completion-nonsep (quote wordbreaks)
   "Return the set of non-breaking characters when QUOTE is the current quote.
@@ -1287,24 +1295,30 @@ The returned alist is a slightly parsed version of the output of
   (let ((alist (list)))
     (with-current-buffer buffer
       (save-excursion
-        (setq alist nil)
-        (goto-char (point-max))
-        (while (= 0 (forward-line -1))
-          (let ((words (bash-completion-strings-from-tokens
-                        (bash-completion-tokenize
-                         (line-beginning-position)
-                         (line-end-position)))))
-            (when (string= "complete" (car words))
-              (if (member "-D" (cdr words))
-                  ;; default completion
-                  (push (cons nil (delete "-D" (cdr words))) alist)
-                ;; normal completion
-                (let* ((reverse-wordsrest (nreverse (cdr words)))
-                       (command (car reverse-wordsrest))
-                       (options (nreverse (cdr reverse-wordsrest))) )
-                  (when (and command options)
-                    (push (cons command options) alist)))))))))
-    alist))
+        (goto-char (point-min))
+        (when (search-forward-regexp "^complete" nil 'noerror)
+          (let ((tokens (bash-completion-strings-from-tokens
+                         (bash-completion-tokenize
+                          (match-beginning 0) (point-max)))))
+            (while tokens
+              (let ((command tokens)
+                    (command-end (member "\n" tokens)))
+                (setq tokens (cdr command-end))
+                (when command-end
+                  (setcdr command-end nil))
+                (when (string= "complete" (car command))
+                  (setq command (nreverse (cdr command)))
+                  (when (equal "\n" (car command))
+                    (setq command (cdr command)))
+                  (if (member "-D" command)
+                      ;; default completion
+                      (push (cons nil (nreverse (delete "-D" command))) alist)
+                    ;; normal completion
+                    (let ((command-name (car command))
+                          (options (nreverse (cdr command))))
+                      (when (and command-name options)
+                        (push (cons command-name options) alist)))))))))))
+    (nreverse alist)))
 
 (defun bash-completion--customize (comp process &optional nodefault)
   (unless (eq 'command (bash-completion--type comp))

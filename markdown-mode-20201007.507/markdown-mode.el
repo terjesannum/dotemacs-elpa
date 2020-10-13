@@ -7,8 +7,8 @@
 ;; Maintainer: Jason R. Blevins <jblevins@xbeta.org>
 ;; Created: May 24, 2007
 ;; Version: 2.5-dev
-;; Package-Version: 20200909.2355
-;; Package-Commit: 8c6775a000bf40d7c7b35a529011a99231a4a4f7
+;; Package-Version: 20201007.507
+;; Package-Commit: 152eae2415258141043e559af97d37a72de6c4e5
 ;; Package-Requires: ((emacs "25.1"))
 ;; Keywords: Markdown, GitHub Flavored Markdown, itex
 ;; URL: https://jblevins.org/projects/markdown-mode/
@@ -2637,9 +2637,10 @@ Group 3 matches the closing backquotes."
       (while (and (markdown-match-code end-of-block)
                   (setq found t)
                   (< (match-end 0) old-point)))
-      (and found                              ; matched something
-           (<= (match-beginning 0) old-point) ; match contains old-point
-           (> (match-end 0) old-point)))))
+      (let ((match-group (if (eq (char-after (match-beginning 0)) ?`) 0 1)))
+        (and found                                        ; matched something
+             (<= (match-beginning match-group) old-point) ; match contains old-point
+             (> (match-end 0) old-point))))))
 
 (defun markdown-inline-code-at-pos-p (pos)
   "Return non-nil if there is an inline code fragment at POS.
@@ -2818,7 +2819,7 @@ When FACELESS is non-nil, do not return matches where faces have been applied."
             (close-end (match-end 4)))
         (if (or (eql (char-before begin) (char-after begin))
                 (markdown-inline-code-at-pos-p begin)
-                (markdown-inline-code-at-pos-p end)
+                (markdown-inline-code-at-pos-p (1- end))
                 (markdown-in-comment-p)
                 (markdown-range-property-any
                  begin begin 'face '(markdown-url-face
