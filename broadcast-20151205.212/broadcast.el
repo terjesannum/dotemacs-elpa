@@ -4,7 +4,6 @@
 
 ;; Author: Russell Black (killdash9@github)
 ;; Keywords: convenience, frames, link, cursors
-;; Package-Version: 20151205.212
 ;; URL: https://github.com/killdash9/broadcast.el
 ;; Created: 9th December 2014
 ;; Version: 20150303

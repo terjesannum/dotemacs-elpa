@@ -10,7 +10,6 @@
 ;;             Andy Stewart <lazycat.manatee@gmail.com>
 ;; Created: 2004
 ;; Version: 1.0.3
-;; Package-Version: 20170801.151
 ;; Last-Updated: 2014-11-06 21:24:03
 ;;           By: Nik Nyby
 ;; URL: https://github.com/nikolas/window-number

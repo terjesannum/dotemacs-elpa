@@ -5,7 +5,6 @@
 ;; Author: Bin Huang <huangbin88@foxmail.com>
 ;; Maintainer: Bin Huang <huangbin88@foxmail.com>
 ;; URL: https://github.com/hbin/smart-shift
-;; Package-Version: 20150203.725
 ;; Created: 5th Jun 2014
 ;; Version: 0.3
 ;; Keywords: convenience, tools

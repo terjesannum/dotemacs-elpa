@@ -2,8 +2,6 @@
 ;; Author: Anton Johansson <anton.johansson@gmail.com> - http://antonj.se
 ;; Created: Dec 15 23:42:04 2010
 ;; Version: 0.7.0
-;; Package-Version: 20210221.1418
-;; Package-Commit: d88db4248882da2d4316e76ed673b4ac1fa99ce3
 ;; URL: https://github.com/antonj/Highlight-Indentation-for-Emacs
 ;;
 ;; This program is free software; you can redistribute it and/or
