@@ -1007,7 +1007,7 @@ dynamically otherwise use `helm-completing-read-default-2'."
                                         'confirm-after-completion)))
                            1 0)
      :fc-transformer (append (list (lambda (candidates _source)
-                                     (helm-completion-in-region--initial-filter
+                                     (helm-completion--initial-filter
                                       (let* ((all (copy-sequence candidates))
                                              (lst (if (and sort-fn (> (length helm-pattern) 0))
                                                      (funcall sort-fn all)
@@ -1100,7 +1100,7 @@ This handler uses dynamic matching which allows honouring `completion-styles'."
                      (append (and default
                                   (memq helm-completion-style '(helm helm-fuzzy))
                                   (list default))
-                             (helm-completion-in-region--initial-filter
+                             (helm-completion--initial-filter
                               (let ((lst (if (and sort-fn (> (length str) 0))
                                              (funcall sort-fn all)
                                            all)))
@@ -1830,42 +1830,79 @@ The `helm-find-files' history `helm-ff-history' is used here."
       (propertize str 'read-only t 'face 'helm-mode-prefix 'rear-nonsticky t)
     str))
 
-(defun helm--symbol-completion-table-affixation (completions)
-  "Same as `help--symbol-completion-table-affixation' but for helm.
+(defun helm--advice-help--symbol-completion-table-affixation (_completions)
+  "Override advice for `help--symbol-completion-table-affixation'.
 
-Return a list of cons cells of the form (disp . real)."
-  (mapcar (lambda (c)
-            (let* ((s   (intern c))
-                   (doc (ignore-errors
-                          (helm-get-first-line-documentation s))))
-              (cons (concat (propertize
-                             (format "%-4s" (help--symbol-class s))
-                             'face 'completions-annotations)
-                            c
-                            (if doc
-                                (propertize (format " -- %s" doc)
-                                            'face 'completions-annotations)
-                              ""))
-                    c)))
-          completions))
+Normally affixation functions use COMPLETIONS as arg, and return a list of
+modified COMPLETIONS. Now we allow affixations functions to return a
+function instead, just like annotation functions. The function should return a
+list of three elements like (comp prefix suffix). This increase significantly
+the speed avoiding one useless loop on complete list of candidates.
 
-(defun helm-completion-in-region--initial-filter (comps afun afix file-comp-p)
+This advice is used in helm completion by `helm-mode'.
+It returns a function and not a list of completions.
+It affects all describe-* functions.
+It uses `helm-get-first-line-documentation' which allow providing documentation
+for `describe-variable' symbols and align properly documentation when helm style
+is used."
+  (lambda (comp)
+    (require 'help-fns)
+    (let* ((sym (intern comp))
+           ;; When using in-buffer implementation we should have the
+           ;; longest len to align documentation for free.
+           ;; Check for style as well in case user switches to emacs
+           ;; style and a candidate buffer remains (with its local vars
+           ;; still available).
+           (max-len (and (memq helm-completion-style '(helm helm-fuzzy))
+                         (buffer-local-value
+                          'helm-candidate-buffer-longest-len
+                          (get-buffer (or (helm-candidate-buffer)
+                                          ;; Return 0 in this case and don't
+                                          ;; fail with a nil arg with
+                                          ;; get-buffer.
+                                          helm-buffer)))))
+           (sep (if (or (null max-len) (zerop max-len))
+                    " --"               ; Default separator.
+                  (make-string (- max-len (length comp)) ? )))
+           (doc (ignore-errors
+                  (helm-get-first-line-documentation sym))))
+      (list comp
+            (propertize
+             (format "%-4s" (help--symbol-class sym))
+             'face 'completions-annotations)
+            (if doc (propertize (format "%s%s" sep doc)
+                                'face 'completions-annotations)
+              "")))))
+
+(defun helm-completion--initial-filter (comps afun afix file-comp-p)
   "Compute COMPS with function AFUN or AFIX unless FILE-COMP-P non nil.
 
 If both AFUN and AFIX are provided only AFIX is used.
 When FILE-COMP-P is provided only filter out dot files."
+  ;; Filter out dot files in file completion. Normally COMPS should be a list of
+  ;; string but in some cases it is given as a list of strings containing a list
+  ;; of string e.g. ("a" "b" "c" ("d" "e" "f")) ; This happen in rgrep
+  ;; (bug#2607) and highlight-* fns (bug #2610), so ensure the list is flattened to
+  ;; avoid e.g. wrong-type argument: stringp '("d" "e" "f")
+  ;; FIXME: If this create a new bug with completion-in-region, flatten COMPS
+  ;; directly in the caller i.e. helm-completing-read-default-1.
+  (setq comps (helm-fast-remove-dups
+               (helm-flatten-list comps)
+               :test 'equal))
   (if file-comp-p
-      ;; Filter out dot files in file completion. Normally COMPS should be a
-      ;; list of string but in some cases it is given as a list of strings
-      ;; containing a list of string e.g. ("a" "b" "c" ("d" "e" "f")) ; This
-      ;; happen in rgrep (bug #2607), so ensure the list is flattened to avoid
-      ;; e.g. wrong-type argument '("d" "e" "f")
-      (cl-loop for f in (helm-fast-remove-dups
-                         (helm-flatten-list comps)
-                         :test 'equal)
+      (cl-loop for f in comps
                unless (string-match "\\`\\.\\{1,2\\}/\\'" f)
                collect f)
-    (cond (afix (helm--symbol-completion-table-affixation comps))
+    (cond (afix (let ((affixations (funcall afix comps)))
+                  (if (functionp affixations)
+                      (cl-loop for comp in comps
+                               for cand = (funcall affixations comp)
+                               collect (cons (concat (nth 1 cand)  ;prefix
+                                                     (nth 0 cand)  ;comp
+                                                     (nth 2 cand)) ;suffix
+                                             comp))
+                    (cl-loop for (comp prefix suffix) in affixations
+                             collect (cons (concat prefix comp suffix) comp)))))
           (afun
            ;; Add annotation at end of
            ;; candidate if needed, e.g. foo<f>, this happen when
@@ -2178,7 +2215,7 @@ Can be used for `completion-in-region-function' by advicing it with an
                              (unless base-size (setq base-size bs))
                              (setq helm-completion--sorting-done (and sort-fn t))
                              (setq all (copy-sequence comps))
-                             (helm-completion-in-region--initial-filter
+                             (helm-completion--initial-filter
                               (if (and sort-fn (> (length str) 0))
                                   (funcall sort-fn all)
                                 all)
@@ -2376,6 +2413,8 @@ Note: This mode is incompatible with Emacs23."
           ;; to advice it.
           (advice-add 'ffap-read-file-or-url :override #'helm-advice--ffap-read-file-or-url))
         (advice-add 'read-buffer-to-switch :override #'helm-mode--read-buffer-to-switch)
+        (advice-add 'help--symbol-completion-table-affixation
+                    :override #'helm--advice-help--symbol-completion-table-affixation)
         (helm-minibuffer-history-mode 1))
     (progn
       (remove-function completing-read-function #'helm--completing-read-default)
@@ -2386,6 +2425,8 @@ Note: This mode is incompatible with Emacs23."
       (when (fboundp 'ffap-read-file-or-url-internal)
         (advice-remove 'ffap-read-file-or-url #'helm-advice--ffap-read-file-or-url))
       (advice-remove 'read-buffer-to-switch #'helm-mode--read-buffer-to-switch)
+      (advice-remove 'help--symbol-completion-table-affixation
+                     #'helm--advice-help--symbol-completion-table-affixation)
       (helm-minibuffer-history-mode -1))))
 
 (provide 'helm-mode)

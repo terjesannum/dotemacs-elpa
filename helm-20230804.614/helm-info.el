@@ -19,6 +19,12 @@
 
 (require 'cl-lib)
 (require 'info)
+;; helm-utils is requiring helm which is requiring helm-lib, but let's require
+;; them explicitely anyway to make it clear what we need. helm-core is needed to
+;; build all the helm-info-* commands and sources.
+(require 'helm)
+(require 'helm-lib)
+(require 'helm-utils) ; for `helm-goto-line'.
 
 (declare-function Info-index-nodes "info" (&optional file))
 (declare-function Info-goto-node "info" (&optional fork))
@@ -98,6 +104,7 @@ Argument TOBUF is the `helm-candidate-buffer'."
 
 (defun helm-info-goto (node-line)
   "The helm-info action to jump to NODE-LINE."
+  (require 'helm-utils)
   (let ((alive (buffer-live-p (get-buffer "*info*"))))
     (Info-goto-node (car node-line))
     (when alive (revert-buffer nil t))
