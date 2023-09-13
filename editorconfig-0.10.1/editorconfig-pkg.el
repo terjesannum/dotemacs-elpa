@@ -1,0 +1,2 @@
+;; Generated package description from editorconfig.el  -*- no-byte-compile: t -*-
+(define-package "editorconfig" "0.10.1" "EditorConfig Emacs Plugin" '((emacs "26.1") (nadvice "0.3")) :commit "ed760770ed5397120b3d68b69afc0778c48d3a47" :authors '(("EditorConfig Team" . "editorconfig@googlegroups.com")) :maintainer '("EditorConfig Team" . "editorconfig@googlegroups.com") :keywords '("convenience" "editorconfig") :url "https://github.com/editorconfig/editorconfig-emacs#readme")
