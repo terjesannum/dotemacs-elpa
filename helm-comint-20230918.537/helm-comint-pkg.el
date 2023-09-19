@@ -1,7 +1,7 @@
-(define-package "helm-comint" "20230911.1725" "Comint prompt navigation for helm"
+(define-package "helm-comint" "20230918.537" "Comint prompt navigation for helm"
   '((emacs "29.1")
     (helm "3.9.4"))
-  :commit "60476860d88b9786118ffb9a593f8006779a4c55" :authors
+  :commit "2998787568b67ffe9fb898a9150d13b37387707a" :authors
   '(("Pierre Neidhardt" . "mail@ambrevar.xyz"))
   :maintainers
   '(("Benedict Wang" . "foss@bhw.name"))

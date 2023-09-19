@@ -1144,7 +1144,7 @@ is used."
                          (helm-in-buffer-get-longest-candidate)))
            (sep (if (or (null max-len) (zerop max-len))
                     " --"               ; Default separator.
-                  (make-string (- max-len (length comp)) ? )))
+                  (make-string (1+ (- max-len (length comp))) ? )))
            (doc (ignore-errors
                   (helm-get-first-line-documentation sym)))
            (symbol-class (help--symbol-class sym))
@@ -1167,7 +1167,7 @@ is used."
                   (propertize it 'face 'helm-completions-detailed)
                   (propertize
                    ;; (format "%-4s" it) makes spaces inheriting text props.
-                   " " 'display (concat it (make-string (- 4 (length it)) ? ))))
+                   " " 'display (concat it (make-string (- 5 (length it)) ? ))))
        ;; Suffix.
        (if doc
            (helm-aand (propertize doc 'face 'helm-completions-detailed)
@@ -1278,20 +1278,25 @@ is used."
 (defun helm-completion-library-affixation (_comps)
   (require 'helm-elisp)
   (lambda (comp)
-    (let* ((sep (make-string (1+ (- (helm-in-buffer-get-longest-candidate)
-                                    (length comp)))
-                             ? ))
-           (path (or (assoc-default comp helm--locate-library-cache)
-                     (let ((p (find-library-name comp)))
-                       (push (cons comp p) helm--locate-library-cache)
-                       p)))
-           (doc (or (gethash comp helm--locate-library-doc-cache)
-                    (puthash comp (helm-locate-lib-get-summary path)
-                             helm--locate-library-doc-cache))))
-      (list comp
-            ""
-            (helm-aand (propertize doc 'face 'font-lock-warning-face)
-                       (propertize " " 'display (concat sep it)))))))
+    ;; Because find-library-include-other-files default to t, we have all the
+    ;; unrelated files and directories coming in ... Even if this modify the
+    ;; behavior of find-library-include-other-files remove them for the benefit
+    ;; of everybody.
+    (unless (string-match "\\(\\.elc\\|/\\)\\'" comp)
+      (let* ((sep (make-string (1+ (- (helm-in-buffer-get-longest-candidate)
+                                      (length comp)))
+                               ? ))
+             (path (or (assoc-default comp helm--locate-library-cache)
+                       (let ((p (find-library-name comp)))
+                         (push (cons comp p) helm--locate-library-cache)
+                         p)))
+             (doc (or (gethash comp helm--locate-library-doc-cache)
+                      (puthash comp (helm-locate-lib-get-summary path)
+                               helm--locate-library-doc-cache))))
+        (list comp
+              ""
+              (helm-aand (propertize doc 'face 'font-lock-warning-face)
+                         (propertize " " 'display (concat sep it))))))))
 
 ;;; Generic completing read
 ;;

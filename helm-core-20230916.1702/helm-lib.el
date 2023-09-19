@@ -1729,7 +1729,7 @@ Directories expansion is not supported."
          (shell-command-switch "-c")
          (cmd "%s %s | head -n1 | awk 'match($0,\"%s\",a) {print a[2]}'\
  | awk -F ' -*-' '{print $1}'")
-         (regexp "^;;;(.*) --- (.*)$")
+         (regexp "^;;;(.*) ---? (.*)$")
          (proc (start-process-shell-command
                 "helm-locate-lib-get-summary" "*helm locate lib*"
                 (format cmd
@@ -1738,15 +1738,15 @@ Directories expansion is not supported."
                         (shell-quote-argument file)
                         regexp)))
          output)
-    (set-process-filter proc nil)
-    (set-process-sentinel proc (lambda (process event)
-                                 (when (string= event "finished\n")
-                                   (setq output
-                                         (with-current-buffer (process-buffer process)
-                                           (replace-regexp-in-string
-                                            "\n" ""
-                                            (buffer-string)))))
-                                 (kill-buffer (process-buffer process))))
+    (set-process-sentinel
+     proc (lambda (process event)
+            (when (string= event "finished\n")
+              (setq output
+                    (with-current-buffer (process-buffer process)
+                      (replace-regexp-in-string
+                       "\n" ""
+                       (buffer-string)))))
+            (kill-buffer (process-buffer process))))
     (while (and proc (eq (process-status proc) 'run))
       (accept-process-output proc))
     (if (string= output "")

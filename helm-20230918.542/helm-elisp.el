@@ -853,19 +853,19 @@ a string, i.e. the `symbol-name' of any existing symbol."
     :persistent-help "Toggle describe function / C-u C-j: Toggle advice"))
 
 (defun helm-advice-candidates ()
-  (cl-loop for (fname) in ad-advised-functions
-        for function = (intern fname)
-        append
-        (cl-loop for class in ad-advice-classes append
-              (cl-loop for advice in (ad-get-advice-info-field function class)
-                    for enabled = (ad-advice-enabled advice)
-                    collect
-                    (cons (format
-                           "%s %s %s"
-                           (if enabled "Enabled " "Disabled")
-                           (propertize fname 'face 'font-lock-function-name-face)
-                           (ad-make-single-advice-docstring advice class nil))
-                          (list function class advice))))))
+  (cl-loop for fname in ad-advised-functions
+           for function = (intern fname)
+           append
+           (cl-loop for class in ad-advice-classes append
+                    (cl-loop for advice in (ad-get-advice-info-field function class)
+                             for enabled = (ad-advice-enabled advice)
+                             collect
+                             (cons (format
+                                    "%s %s %s"
+                                    (if enabled "Enabled " "Disabled")
+                                    (propertize fname 'face 'font-lock-function-name-face)
+                                    (ad-make-single-advice-docstring advice class nil))
+                                   (list function class advice))))))
 
 (defun helm-advice-persistent-action (func-class-advice)
   (if current-prefix-arg
@@ -906,13 +906,12 @@ a string, i.e. the `symbol-name' of any existing symbol."
 (defvar helm--locate-library-doc-cache (make-hash-table :test 'equal))
 (defun helm-locate-library-scan-list ()
   (cl-loop for dir in load-path
-           with load-suffixes = (find-library-suffixes)
            when (file-directory-p dir)
            nconc (directory-files
-                  dir nil (concat (regexp-opt (get-load-suffixes)) "\\'"))))
+                  dir nil (concat (regexp-opt (find-library-suffixes)) "\\'"))))
 
 ;;;###autoload
-(defun helm-locate-library ()
+(defun helm-locate-library (&optional arg)
   "Preconfigured helm to locate elisp libraries.
 
 When `completions-detailed' or `helm-completions-detailed' is non nil, a description
@@ -923,8 +922,12 @@ package, using M-x psession-make-persistent-variable.
 NOTE: The caches affect as well `find-libray' and `locate-library' when
 `helm-mode' is enabled and `completions-detailed' is non nil.
 There is no need to refresh the caches, they will be updated automatically if
-some new libraries are found."
-  (interactive)
+some new libraries are found, however when a library update its headers and the
+description change you can reset the caches with a prefix arg."
+  (interactive "P")
+  (when arg
+    (setq helm--locate-library-cache nil)
+    (clrhash helm--locate-library-doc-cache))
   (message "Please wait, scanning libraries...")
   (helm :sources
         (helm-build-in-buffer-source  "Elisp libraries (Scan)"
@@ -933,23 +936,23 @@ some new libraries are found."
           :keymap helm-generic-files-map
           :filtered-candidate-transformer
           (lambda (candidates _source)
-            (if (or completions-detailed helm-completions-detailed)
-                (cl-loop with lgst = (helm-in-buffer-get-longest-candidate)
-                         for c in candidates
-                         for sep = (make-string (1+ (- lgst (length c))) ? )
-                         for bn = (helm-basename c 2)
-                         for path = (or (assoc-default bn helm--locate-library-cache)
-                                        (let ((p (find-library-name bn)))
-                                          (push (cons bn p) helm--locate-library-cache)
-                                          p))
-                         for doc = (or (gethash bn helm--locate-library-doc-cache)
-                                       (puthash bn (helm-locate-lib-get-summary path)
-                                                helm--locate-library-doc-cache))
-                         for disp = (helm-aand (propertize doc 'face 'font-lock-warning-face)
-                                               (propertize " " 'display (concat sep it))
-                                               (concat bn it))
-                         collect (cons disp path))
-              candidates))
+            (cl-loop with lgst = (helm-in-buffer-get-longest-candidate)
+                     for c in candidates
+                     for bn = (helm-basename c 2)
+                     for sep = (make-string (1+ (- lgst (length bn))) ? )
+                     for path = (or (assoc-default bn helm--locate-library-cache)
+                                    (let ((p (find-library-name bn)))
+                                      (push (cons bn p) helm--locate-library-cache)
+                                      p))
+                     for doc = (or (gethash bn helm--locate-library-doc-cache)
+                                   (puthash bn (helm-locate-lib-get-summary path)
+                                            helm--locate-library-doc-cache))
+                     for disp = (helm-aand (propertize doc 'face 'font-lock-warning-face)
+                                           (propertize " " 'display (concat sep it))
+                                           (concat bn it))
+                     collect (if (or completions-detailed helm-completions-detailed)
+                                 (cons disp path)
+                               (cons bn path))))
           :action (helm-actions-from-type-file))
         :buffer "*helm locate library*"))
 

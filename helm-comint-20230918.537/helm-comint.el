@@ -237,7 +237,7 @@ Default action for comint history."
   (interactive)
   (when (or (derived-mode-p 'comint-mode)
             (member major-mode helm-comint-mode-list))
-    (helm :sources 'helm-source-comint-input-ring
+    (helm :sources 'helm-comint-input-ring
           :input (buffer-substring-no-properties (comint-line-beginning-position)
                                                  (pos-eol))
           :buffer "*helm comint history*")))

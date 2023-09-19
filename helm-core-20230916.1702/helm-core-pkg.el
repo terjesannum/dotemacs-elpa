@@ -1,8 +1,7 @@
-(define-package "helm" "20230916.512" "Helm is an Emacs incremental and narrowing framework"
-  '((helm-core "3.9.4")
-    (wfnames "1.1")
-    (popup "0.5.3"))
-  :commit "fddf8e32aa4ff865f2ed725c3ab9e226837f5541" :authors
+(define-package "helm-core" "20230916.1702" "Development files for Helm"
+  '((emacs "25.1")
+    (async "1.9.7"))
+  :commit "7a7f79cfee7c10aafbac216e15d455e3b4c3b1b8" :authors
   '(("Thierry Volpiatto" . "thievol@posteo.net"))
   :maintainers
   '(("Thierry Volpiatto" . "thievol@posteo.net"))
