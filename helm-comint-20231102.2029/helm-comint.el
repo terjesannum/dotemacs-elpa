@@ -4,7 +4,8 @@
 
 ;; Author: Pierre Neidhardt <mail@ambrevar.xyz>
 ;; Maintainer: Benedict Wang <foss@bhw.name>
-;; Version: 0.0.1
+;; Package-Version: 20231102.2029
+;; Package-Revision: 9215b2aa8f42
 ;; Package-Requires: ((emacs "25.1") (helm "3.9.4"))
 ;; Keywords: processes, matching
 ;; Homepage: https://github.com/benedicthw/helm-comint.git

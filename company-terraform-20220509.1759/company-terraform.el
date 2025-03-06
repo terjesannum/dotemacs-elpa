@@ -3,7 +3,8 @@
 ;; Copyright (C) 2017 Rafał Cieślak
 
 ;; Author: Rafał Cieślak <rafalcieslak256@gmail.com>
-;; Version: 1.0
+;; Package-Version: 20220509.1759
+;; Package-Revision: 8d5a16d1bbee
 ;; Package-Requires: ((emacs "24.4") (company "0.8.12") (terraform-mode "0.06"))
 ;; Created: 10 August 2017
 ;; Keywords: abbrev, convenience, terraform, company

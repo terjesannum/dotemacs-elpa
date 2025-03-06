@@ -32,19 +32,19 @@ Finish shifting and invoke the corresponding command." t)
 (autoload 'smart-shift-mode "smart-shift" "\
 Shift line/region to left/right.
 
-This is a minor mode.  If called interactively, toggle the
-`Smart-Shift mode' mode.  If the prefix argument is positive,
-enable the mode, and if it is zero or negative, disable the mode.
+This is a minor mode.  If called interactively, toggle the `Smart-Shift
+mode' mode.  If the prefix argument is positive, enable the mode, and if
+it is zero or negative, disable the mode.
 
-If called from Lisp, toggle the mode if ARG is `toggle'.  Enable
-the mode if ARG is nil, omitted, or is a positive number.
-Disable the mode if ARG is a negative number.
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
 
 To check whether the minor mode is enabled in the current buffer,
-evaluate `smart-shift-mode'.
+evaluate the variable `smart-shift-mode'.
 
-The mode's hook is called both when the mode is enabled and when
-it is disabled.
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
 
 (fn &optional ARG)" t)
 (put 'global-smart-shift-mode 'globalized-minor-mode t)

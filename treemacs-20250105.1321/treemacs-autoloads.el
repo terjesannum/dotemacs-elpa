@@ -276,18 +276,18 @@ Does not require `treemacs-git-mode' to be active.
 
 This is a global minor mode.  If called interactively, toggle the
 `Treemacs-Git-Commit-Diff mode' mode.  If the prefix argument is
-positive, enable the mode, and if it is zero or negative, disable
-the mode.
+positive, enable the mode, and if it is zero or negative, disable the
+mode.
 
-If called from Lisp, toggle the mode if ARG is `toggle'.  Enable
-the mode if ARG is nil, omitted, or is a positive number.
-Disable the mode if ARG is a negative number.
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
 
 To check whether the minor mode is enabled in the current buffer,
 evaluate `(default-value \\='treemacs-git-commit-diff-mode)'.
 
-The mode's hook is called both when the mode is enabled and when
-it is disabled.
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
 
 (fn &optional ARG)" t)
 (register-definition-prefixes "treemacs-git-commit-diff-mode" '("treemacs--"))
@@ -317,19 +317,19 @@ This mode makes use of `treemacs-user-header-line-format' - and thus
 these options.
 
 This is a global minor mode.  If called interactively, toggle the
-`Treemacs-Indicate-Top-Scroll mode' mode.  If the prefix argument
-is positive, enable the mode, and if it is zero or negative,
-disable the mode.
+`Treemacs-Indicate-Top-Scroll mode' mode.  If the prefix argument is
+positive, enable the mode, and if it is zero or negative, disable the
+mode.
 
-If called from Lisp, toggle the mode if ARG is `toggle'.  Enable
-the mode if ARG is nil, omitted, or is a positive number.
-Disable the mode if ARG is a negative number.
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
 
 To check whether the minor mode is enabled in the current buffer,
 evaluate `(default-value \\='treemacs-indicate-top-scroll-mode)'.
 
-The mode's hook is called both when the mode is enabled and when
-it is disabled.
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
 
 (fn &optional ARG)" t)
 (register-definition-prefixes "treemacs-header-line" '("treemacs-"))
@@ -515,18 +515,18 @@ The peeked window can be scrolled using
 `treemacs-next/previous-page-other-window'
 
 This is a global minor mode.  If called interactively, toggle the
-`Treemacs-Peek mode' mode.  If the prefix argument is positive,
-enable the mode, and if it is zero or negative, disable the mode.
+`Treemacs-Peek mode' mode.  If the prefix argument is positive, enable
+the mode, and if it is zero or negative, disable the mode.
 
-If called from Lisp, toggle the mode if ARG is `toggle'.  Enable
-the mode if ARG is nil, omitted, or is a positive number.
-Disable the mode if ARG is a negative number.
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
 
 To check whether the minor mode is enabled in the current buffer,
 evaluate `(default-value \\='treemacs-peek-mode)'.
 
-The mode's hook is called both when the mode is enabled and when
-it is disabled.
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
 
 (fn &optional ARG)" t)
 (register-definition-prefixes "treemacs-peek-mode" '("treemacs--"))
@@ -572,18 +572,18 @@ This mode requires at least Emacs version 27 since it relies on
 
 This is a global minor mode.  If called interactively, toggle the
 `Treemacs-Project-Follow mode' mode.  If the prefix argument is
-positive, enable the mode, and if it is zero or negative, disable
-the mode.
+positive, enable the mode, and if it is zero or negative, disable the
+mode.
 
-If called from Lisp, toggle the mode if ARG is `toggle'.  Enable
-the mode if ARG is nil, omitted, or is a positive number.
-Disable the mode if ARG is a negative number.
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
 
 To check whether the minor mode is enabled in the current buffer,
 evaluate `(default-value \\='treemacs-project-follow-mode)'.
 
-The mode's hook is called both when the mode is enabled and when
-it is disabled.
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
 
 (fn &optional ARG)" t)
 (register-definition-prefixes "treemacs-project-follow-mode" '("treemacs--"))
@@ -637,19 +637,18 @@ short time and giving the appearance of the tag follow action lasting much
 longer than it really does.
 
 This is a global minor mode.  If called interactively, toggle the
-`Treemacs-Tag-Follow mode' mode.  If the prefix argument is
-positive, enable the mode, and if it is zero or negative, disable
-the mode.
+`Treemacs-Tag-Follow mode' mode.  If the prefix argument is positive,
+enable the mode, and if it is zero or negative, disable the mode.
 
-If called from Lisp, toggle the mode if ARG is `toggle'.  Enable
-the mode if ARG is nil, omitted, or is a positive number.
-Disable the mode if ARG is a negative number.
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
 
 To check whether the minor mode is enabled in the current buffer,
 evaluate `(default-value \\='treemacs-tag-follow-mode)'.
 
-The mode's hook is called both when the mode is enabled and when
-it is disabled.
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
 
 (fn &optional ARG)" t)
 (register-definition-prefixes "treemacs-tag-follow-mode" '("treemacs--"))

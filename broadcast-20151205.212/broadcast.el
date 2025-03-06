@@ -6,7 +6,8 @@
 ;; Keywords: convenience, frames, link, cursors
 ;; URL: https://github.com/killdash9/broadcast.el
 ;; Created: 9th December 2014
-;; Version: 20150303
+;; Package-Version: 20151205.212
+;; Package-Revision: f6f9cd2e0e3f
 ;; Package-Requires: ((emacs "24.4"))
 
 ;; This program is free software; you can redistribute it and/or modify

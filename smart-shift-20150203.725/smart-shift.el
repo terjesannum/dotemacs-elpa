@@ -6,7 +6,8 @@
 ;; Maintainer: Bin Huang <huangbin88@foxmail.com>
 ;; URL: https://github.com/hbin/smart-shift
 ;; Created: 5th Jun 2014
-;; Version: 0.3
+;; Package-Version: 20150203.725
+;; Package-Revision: a26ab2b24013
 ;; Keywords: convenience, tools
 
 ;; This file is NOT part of GNU Emacs.

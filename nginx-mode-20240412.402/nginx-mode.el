@@ -5,7 +5,8 @@
 ;; Author: Andrew J Cosgriff <andrew@cosgriff.name>
 ;; Maintainer: Andrew J Cosgriff <andrew@cosgriff.name>
 ;; Created: 15 Oct 2010
-;; Version: 1.1.10
+;; Package-Version: 20240412.402
+;; Package-Revision: c4ac5de975d6
 ;; Keywords: languages, nginx
 
 ;; available from http://github.com/ajc/nginx-mode

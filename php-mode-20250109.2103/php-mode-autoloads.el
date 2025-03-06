@@ -52,19 +52,19 @@ Setup alignment configuration for PHP code.")
 (autoload 'php-align-mode "php-align" "\
 Alignment lines for PHP script.
 
-This is a minor mode.  If called interactively, toggle the
-`Php-Align mode' mode.  If the prefix argument is positive,
-enable the mode, and if it is zero or negative, disable the mode.
+This is a minor mode.  If called interactively, toggle the `Php-Align
+mode' mode.  If the prefix argument is positive, enable the mode, and if
+it is zero or negative, disable the mode.
 
-If called from Lisp, toggle the mode if ARG is `toggle'.  Enable
-the mode if ARG is nil, omitted, or is a positive number.
-Disable the mode if ARG is a negative number.
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
 
 To check whether the minor mode is enabled in the current buffer,
-evaluate `php-align-mode'.
+evaluate the variable `php-align-mode'.
 
-The mode's hook is called both when the mode is enabled and when
-it is disabled.
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
 
 (fn &optional ARG)" t)
 (register-definition-prefixes "php-align" '("php-align-"))
@@ -120,18 +120,18 @@ Apply format on after save hook.")
 Automatically apply formatting when saving an edited file.
 
 This is a minor mode.  If called interactively, toggle the
-`Php-Format-Auto mode' mode.  If the prefix argument is positive,
-enable the mode, and if it is zero or negative, disable the mode.
+`Php-Format-Auto mode' mode.  If the prefix argument is positive, enable
+the mode, and if it is zero or negative, disable the mode.
 
-If called from Lisp, toggle the mode if ARG is `toggle'.  Enable
-the mode if ARG is nil, omitted, or is a positive number.
-Disable the mode if ARG is a negative number.
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
 
 To check whether the minor mode is enabled in the current buffer,
-evaluate `php-format-auto-mode'.
+evaluate the variable `php-format-auto-mode'.
 
-The mode's hook is called both when the mode is enabled and when
-it is disabled.
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
 
 (fn &optional ARG)" t)
 (register-definition-prefixes "php-format" '("php-format-"))
@@ -160,19 +160,19 @@ ACTIVATE: T is given when activeting, NIL when deactivating PHP-IDE.")
 (autoload 'php-ide-mode "php-ide" "\
 Minor mode for integrate IDE-like tools.
 
-This is a minor mode.  If called interactively, toggle the
-`Php-Ide mode' mode.  If the prefix argument is positive, enable
-the mode, and if it is zero or negative, disable the mode.
+This is a minor mode.  If called interactively, toggle the `Php-Ide
+mode' mode.  If the prefix argument is positive, enable the mode, and if
+it is zero or negative, disable the mode.
 
-If called from Lisp, toggle the mode if ARG is `toggle'.  Enable
-the mode if ARG is nil, omitted, or is a positive number.
-Disable the mode if ARG is a negative number.
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable the
+mode if ARG is nil, omitted, or is a positive number.  Disable the mode
+if ARG is a negative number.
 
 To check whether the minor mode is enabled in the current buffer,
-evaluate `php-ide-mode'.
+evaluate the variable `php-ide-mode'.
 
-The mode's hook is called both when the mode is enabled and when
-it is disabled.
+The mode's hook is called both when the mode is enabled and when it is
+disabled.
 
 (fn &optional ARG)" t)
 (autoload 'php-ide-turn-on "php-ide" "\

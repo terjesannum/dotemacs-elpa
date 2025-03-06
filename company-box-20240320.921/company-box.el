@@ -6,7 +6,8 @@
 ;; URL: https://github.com/sebastiencs/company-box
 ;; Keywords: company, completion, front-end, convenience
 ;; Package-Requires: ((emacs "26.0.91") (dash "2.19.0") (company "0.9.6") (frame-local "0.0.1"))
-;; Version: 0.0.1
+;; Package-Version: 20240320.921
+;; Package-Revision: c4f2e243fba0
 
 ;;; License
 ;;

@@ -4,7 +4,8 @@
 ;;
 ;; Author: Wilfred Hughes <me@wilfred.me.uk>
 ;; Created: 21 October 2014
-;; Version: 0.5
+;; Package-Version: 20210123.1949
+;; Package-Revision: ec9b527191cd
 
 ;;; Commentary:
 

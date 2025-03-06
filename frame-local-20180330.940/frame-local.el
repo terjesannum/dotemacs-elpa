@@ -6,7 +6,8 @@
 ;; URL: https://github.com/sebastiencs/frame-local
 ;; Keywords: frames, tools, local, lisp
 ;; Package-Requires: ((emacs "25.1"))
-;; Version: 0.0.1
+;; Package-Version: 20180330.940
+;; Package-Revision: 51c088960262
 
 ;;; License
 ;;
