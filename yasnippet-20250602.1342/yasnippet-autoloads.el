@@ -31,8 +31,6 @@ evaluate the variable `yas-minor-mode'.
 The mode's hook is called both when the mode is enabled and when it is
 disabled.
 
-\\{yas-minor-mode-map}
-
 (fn &optional ARG)" t)
 (put 'yas-global-mode 'globalized-minor-mode t)
 (defvar yas-global-mode nil "\
