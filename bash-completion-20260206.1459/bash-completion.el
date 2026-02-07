@@ -4,8 +4,8 @@
 
 ;; Author: Stephane Zermatten <szermatt@gmx.net>
 ;; Maintainer: Stephane Zermatten <szermatt@gmail.com>
-;; Package-Version: 20250721.2026
-;; Package-Revision: 762f28fefba4
+;; Package-Version: 20260206.1459
+;; Package-Revision: 5b621db96efc
 ;; Keywords: convenience, unix
 ;; URL: http://github.com/szermatt/emacs-bash-completion
 ;; Package-Requires: ((emacs "25.3"))
@@ -1551,7 +1551,6 @@ Return the status code of the command, as a number."
                "  history -d $c &>/dev/null || true;"
                "} ; function __ebcret {"
                "  PS1=\"$(eval \"echo \\\"${__ebcp[0]}\\\"\")\";"
-               "  echo >>/tmp/debug \">>$PS1<<\";"
                "  __ebcret=$1;"
                "  echo \"==emacs==ret=${__ebcret}==.\";"
                "  return ${__ebcp[2]};"
