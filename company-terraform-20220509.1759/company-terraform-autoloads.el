@@ -11,13 +11,13 @@
 
 ;;; Generated autoloads from company-terraform.el
 
-(autoload 'company-terraform "company-terraform" "\
-Main entry point for a company backend.
+(autoload 'company-terraform "company-terraform"
+"Main entry point for a company backend.
 Read `company-mode` function docs for the semantics of this function.
 
 (fn COMMAND &optional ARG &rest IGNORED)")
-(autoload 'company-terraform-init "company-terraform" "\
-Add terraform to the company backends." t)
+(autoload 'company-terraform-init "company-terraform"
+"Add terraform to the company backends." t)
 (register-definition-prefixes "company-terraform" '("company-terraform-"))
 
 

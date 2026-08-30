@@ -11,8 +11,8 @@
 
 ;;; Generated autoloads from scala-compile.el
 
-(autoload 'scala-compile "scala-compile" "\
-`compile' specialised to Scala.
+(autoload 'scala-compile "scala-compile"
+"`compile' specialised to Scala.
 
 First use in a buffer or calling with a prefix will prompt for a
 command, otherwise the last command is used.
@@ -33,20 +33,18 @@ A string argument will run the command (for scripting).
 
 ;;; Generated autoloads from scala-mode.el
 
-(autoload 'scala-mode:set-scala-syntax-mode "scala-mode" "\
-Sets the syntax-table and other related variables for the current buffer
+(autoload 'scala-mode:set-scala-syntax-mode "scala-mode"
+"Sets the syntax-table and other related variables for the current buffer
 to those of scala-mode. Can be used to make some other major mode (such
 as sbt-mode) use scala syntax-table.")
-(autoload 'scala-mode:goto-start-of-code "scala-mode" "\
-Go to the start of the real code in the file: object, class or trait." t)
-(autoload 'scala-mode "scala-mode" "\
-Major mode for editing scala code.
+(autoload 'scala-mode:goto-start-of-code "scala-mode"
+"Go to the start of the real code in the file: object, class or trait." t)
+(autoload 'scala-mode "scala-mode"
+"Major mode for editing scala code.
 
 When started, runs `scala-mode-hook'.
 
-\\{scala-mode-map}
-
-(fn)" t)
+\\{scala-mode-map}" t)
 (add-to-list 'auto-mode-alist '("\\.\\(scala\\|sbt\\|worksheet\\.sc\\)\\'" . scala-mode))
 (modify-coding-system-alist 'file "\\.\\(scala\\|sbt\\|worksheet\\.sc\\)\\'" 'utf-8)
 (register-definition-prefixes "scala-mode" '("scala-mode:"))

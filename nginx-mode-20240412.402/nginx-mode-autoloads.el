@@ -11,13 +11,15 @@
 
 ;;; Generated autoloads from nginx-mode.el
 
-(autoload 'nginx-mode "nginx-mode" "\
-Major mode for highlighting nginx config files.
+(autoload 'nginx-mode "nginx-mode"
+"Major mode for highlighting nginx config files.
 
 The variable nginx-indent-level controls the amount of indentation.
 \\{nginx-mode-map}
 
-(fn)" t)
+In addition to any hooks its parent mode `prog-mode' might have run,
+this mode runs the hook `nginx-mode-hook', as the final or penultimate
+step during initialization." t)
 (add-to-list 'auto-mode-alist '("nginx\\.conf\\'" . nginx-mode))
 (add-to-list 'auto-mode-alist '("/nginx/.+\\.conf\\'" . nginx-mode))
 (add-to-list 'magic-fallback-mode-alist '("\\(?:.*

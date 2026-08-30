@@ -12,10 +12,14 @@
 ;;; Generated autoloads from yaml-mode.el
 
 (let ((loads (get 'yaml 'custom-loads))) (if (member '"yaml-mode" loads) nil (put 'yaml 'custom-loads (cons '"yaml-mode" loads)) (put 'languages 'custom-loads (cons 'yaml (get 'languages 'custom-loads)))))
-(autoload 'yaml-mode "yaml-mode" "\
-Simple mode to edit YAML.
+(autoload 'yaml-mode "yaml-mode"
+"Simple mode to edit YAML.
 
-(fn)" t)
+In addition to any hooks its parent mode `text-mode' might have run,
+this mode runs the hook `yaml-mode-hook', as the final or penultimate
+step during initialization.
+
+\\{yaml-mode-map}" t)
 (add-to-list 'auto-mode-alist '("\\.\\(e?ya?\\|ra\\)ml\\'" . yaml-mode))
 (add-to-list 'magic-mode-alist '("^%YAML\\s-+[0-9]+\\.[0-9]+\\(\\s-+#\\|\\s-*$\\)" . yaml-mode))
 (register-definition-prefixes "yaml-mode" '("yaml-"))

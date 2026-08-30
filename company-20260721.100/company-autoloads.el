@@ -11,8 +11,8 @@
 
 ;;; Generated autoloads from company.el
 
-(autoload 'company-mode "company" "\
-\"complete anything\"; is an in-buffer completion framework.
+(autoload 'company-mode "company"
+"\"complete anything\"; is an in-buffer completion framework.
 
 Completion starts automatically, depending on the values
 `company-idle-delay' and `company-minimum-prefix-length'.
@@ -56,16 +56,19 @@ disabled.
 
 (fn &optional ARG)" t)
 (put 'global-company-mode 'globalized-minor-mode t)
-(defvar global-company-mode nil "\
-Non-nil if Global Company mode is enabled.
+(defvar global-company-mode nil
+"Non-nil if Global Company mode is enabled.
 See the `global-company-mode' command
 for a description of this minor mode.
 Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
 or call the function `global-company-mode'.")
 (custom-autoload 'global-company-mode "company" nil)
-(autoload 'global-company-mode "company" "\
-Toggle Company mode in all buffers.
+(autoload 'global-company-mode "company"
+"Toggle Company mode in many buffers.
+Specifically, Company mode is enabled in all buffers where
+`company-mode-on' would do it.
+
 With prefix ARG, enable Global Company mode if ARG is positive;
 otherwise, disable it.
 
@@ -73,19 +76,16 @@ If called from Lisp, toggle the mode if ARG is `toggle'.
 Enable the mode if ARG is nil, omitted, or is a positive number.
 Disable the mode if ARG is a negative number.
 
-Company mode is enabled in all buffers where `company-mode-on' would
-do it.
-
 See `company-mode' for more information on Company mode.
 
 (fn &optional ARG)" t)
-(autoload 'company-manual-begin "company" "\
-Start the completion interface.
+(autoload 'company-manual-begin "company"
+"Start the completion interface.
 
 Unlike `company-complete-selection' or `company-complete', this command
 doesn't cause any immediate changes to the buffer text." t)
-(autoload 'company-complete "company" "\
-Insert the common part of all candidates or the current selection.
+(autoload 'company-complete "company"
+"Insert the common part of all candidates or the current selection.
 The first time this is called, the common part is inserted, the second
 time, or when the selection has been changed, the selected candidate is
 inserted." t)
@@ -94,8 +94,8 @@ inserted." t)
 
 ;;; Generated autoloads from company-abbrev.el
 
-(autoload 'company-abbrev "company-abbrev" "\
-`company-mode' completion backend for abbrev.
+(autoload 'company-abbrev "company-abbrev"
+"`company-mode' completion backend for abbrev.
 
 (fn COMMAND &optional ARG &rest IGNORED)" t)
 (register-definition-prefixes "company-abbrev" '("company-abbrev-insert"))
@@ -103,8 +103,8 @@ inserted." t)
 
 ;;; Generated autoloads from company-bbdb.el
 
-(autoload 'company-bbdb "company-bbdb" "\
-`company-mode' completion backend for BBDB.
+(autoload 'company-bbdb "company-bbdb"
+"`company-mode' completion backend for BBDB.
 
 (fn COMMAND &optional ARG &rest IGNORE)" t)
 (register-definition-prefixes "company-bbdb" '("company-bbdb-"))
@@ -117,13 +117,13 @@ inserted." t)
 
 ;;; Generated autoloads from company-childframe.el
 
-(autoload 'company-childframe-frontend "company-childframe" "\
-`company-mode' frontend using childframe.
+(autoload 'company-childframe-frontend "company-childframe"
+"`company-mode' frontend using childframe.
 For COMMAND refer to `company-frontends'.
 
 (fn COMMAND)")
-(autoload 'company-childframe-unless-just-one-frontend "company-childframe" "\
-`company-childframe-frontend', but not shown for single candidates.
+(autoload 'company-childframe-unless-just-one-frontend "company-childframe"
+"`company-childframe-frontend', but not shown for single candidates.
 
 (fn COMMAND)")
 (register-definition-prefixes "company-childframe" '("company-childframe-"))
@@ -141,8 +141,8 @@ For COMMAND refer to `company-frontends'.
 
 ;;; Generated autoloads from company-css.el
 
-(autoload 'company-css "company-css" "\
-`company-mode' completion backend for `css-mode'.
+(autoload 'company-css "company-css"
+"`company-mode' completion backend for `css-mode'.
 
 (fn COMMAND &optional ARG &rest IGNORED)" t)
 (register-definition-prefixes "company-css" '("company-css-"))
@@ -150,8 +150,8 @@ For COMMAND refer to `company-frontends'.
 
 ;;; Generated autoloads from company-dabbrev.el
 
-(autoload 'company-dabbrev "company-dabbrev" "\
-dabbrev-like `company-mode' completion backend.
+(autoload 'company-dabbrev "company-dabbrev"
+"dabbrev-like `company-mode' completion backend.
 
 (fn COMMAND &optional ARG &rest IGNORED)" t)
 (register-definition-prefixes "company-dabbrev" '("company-dabbrev-"))
@@ -159,8 +159,8 @@ dabbrev-like `company-mode' completion backend.
 
 ;;; Generated autoloads from company-dabbrev-code.el
 
-(autoload 'company-dabbrev-code "company-dabbrev-code" "\
-dabbrev-like `company-mode' backend for code.
+(autoload 'company-dabbrev-code "company-dabbrev-code"
+"dabbrev-like `company-mode' backend for code.
 The backend looks for all symbols in the current buffer that aren't in
 comments or strings.
 
@@ -170,8 +170,8 @@ comments or strings.
 
 ;;; Generated autoloads from company-etags.el
 
-(autoload 'company-etags "company-etags" "\
-`company-mode' completion backend for etags.
+(autoload 'company-etags "company-etags"
+"`company-mode' completion backend for etags.
 
 (fn COMMAND &optional ARG &rest REST)" t)
 (register-definition-prefixes "company-etags" '("company-etags-"))
@@ -179,8 +179,8 @@ comments or strings.
 
 ;;; Generated autoloads from company-files.el
 
-(autoload 'company-files "company-files" "\
-`company-mode' completion backend existing file names.
+(autoload 'company-files "company-files"
+"`company-mode' completion backend existing file names.
 Completions works for proper absolute and relative files paths.
 File paths with spaces are only supported inside strings.
 
@@ -190,8 +190,8 @@ File paths with spaces are only supported inside strings.
 
 ;;; Generated autoloads from company-gtags.el
 
-(autoload 'company-gtags "company-gtags" "\
-`company-mode' completion backend for GNU Global.
+(autoload 'company-gtags "company-gtags"
+"`company-mode' completion backend for GNU Global.
 
 (fn COMMAND &optional ARG &rest IGNORED)" t)
 (register-definition-prefixes "company-gtags" '("company-gtags-"))
@@ -199,8 +199,8 @@ File paths with spaces are only supported inside strings.
 
 ;;; Generated autoloads from company-ispell.el
 
-(autoload 'company-ispell "company-ispell" "\
-`company-mode' completion backend using Ispell.
+(autoload 'company-ispell "company-ispell"
+"`company-mode' completion backend using Ispell.
 
 (fn COMMAND &optional ARG &rest IGNORED)" t)
 (register-definition-prefixes "company-ispell" '("company-"))
@@ -208,8 +208,8 @@ File paths with spaces are only supported inside strings.
 
 ;;; Generated autoloads from company-keywords.el
 
-(autoload 'company-keywords "company-keywords" "\
-`company-mode' backend for programming language keywords.
+(autoload 'company-keywords "company-keywords"
+"`company-mode' backend for programming language keywords.
 
 (fn COMMAND &optional ARG &rest IGNORED)" t)
 (register-definition-prefixes "company-keywords" '("company-keywords-"))
@@ -217,8 +217,8 @@ File paths with spaces are only supported inside strings.
 
 ;;; Generated autoloads from company-nxml.el
 
-(autoload 'company-nxml "company-nxml" "\
-`company-mode' completion backend for `nxml-mode'.
+(autoload 'company-nxml "company-nxml"
+"`company-mode' completion backend for `nxml-mode'.
 
 (fn COMMAND &optional ARG &rest IGNORED)" t)
 (register-definition-prefixes "company-nxml" '("company-nxml-"))
@@ -226,8 +226,8 @@ File paths with spaces are only supported inside strings.
 
 ;;; Generated autoloads from company-oddmuse.el
 
-(autoload 'company-oddmuse "company-oddmuse" "\
-`company-mode' completion backend for `oddmuse-mode'.
+(autoload 'company-oddmuse "company-oddmuse"
+"`company-mode' completion backend for `oddmuse-mode'.
 
 (fn COMMAND &optional ARG &rest IGNORED)" t)
 (register-definition-prefixes "company-oddmuse" '("company-oddmuse-"))
@@ -235,8 +235,8 @@ File paths with spaces are only supported inside strings.
 
 ;;; Generated autoloads from company-semantic.el
 
-(autoload 'company-semantic "company-semantic" "\
-`company-mode' completion backend using CEDET Semantic.
+(autoload 'company-semantic "company-semantic"
+"`company-mode' completion backend using CEDET Semantic.
 
 (fn COMMAND &optional ARG &rest IGNORED)" t)
 (register-definition-prefixes "company-semantic" '("company-semantic-"))
@@ -249,8 +249,8 @@ File paths with spaces are only supported inside strings.
 
 ;;; Generated autoloads from company-tempo.el
 
-(autoload 'company-tempo "company-tempo" "\
-`company-mode' completion backend for tempo.
+(autoload 'company-tempo "company-tempo"
+"`company-mode' completion backend for tempo.
 
 (fn COMMAND &optional ARG &rest IGNORED)" t)
 (register-definition-prefixes "company-tempo" '("company-tempo-"))
@@ -258,24 +258,24 @@ File paths with spaces are only supported inside strings.
 
 ;;; Generated autoloads from company-tng.el
 
-(autoload 'company-tng-frontend "company-tng" "\
-When the user changes the selection at least once, this
+(autoload 'company-tng-frontend "company-tng"
+"When the user changes the selection at least once, this
 frontend will display the candidate in the buffer as if it's
 already there and any key outside of `company-active-map' will
 confirm the selection and finish the completion.
 
 (fn COMMAND)")
 (define-obsolete-function-alias 'company-tng-configure-default 'company-tng-mode "0.10.0" "Applies the default configuration to enable company-tng.")
-(defvar company-tng-mode nil "\
-Non-nil if Company-Tng mode is enabled.
+(defvar company-tng-mode nil
+"Non-nil if Company-Tng mode is enabled.
 See the `company-tng-mode' command
 for a description of this minor mode.
 Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
 or call the function `company-tng-mode'.")
 (custom-autoload 'company-tng-mode "company-tng" nil)
-(autoload 'company-tng-mode "company-tng" "\
-This minor mode enables `company-tng-frontend'.
+(autoload 'company-tng-mode "company-tng"
+"This minor mode enables `company-tng-frontend'.
 
 This is a global minor mode.  If called interactively, toggle the
 `Company-Tng mode' mode.  If the prefix argument is positive, enable the
@@ -297,8 +297,8 @@ disabled.
 
 ;;; Generated autoloads from company-yasnippet.el
 
-(autoload 'company-yasnippet "company-yasnippet" "\
-`company-mode' backend for `yasnippet'.
+(autoload 'company-yasnippet "company-yasnippet"
+"`company-mode' backend for `yasnippet'.
 
 This backend should be used with care, because as long as there are
 snippets defined for the current major mode, this backend will always

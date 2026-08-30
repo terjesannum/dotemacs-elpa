@@ -11,10 +11,14 @@
 
 ;;; Generated autoloads from terraform-mode.el
 
-(autoload 'terraform-mode "terraform-mode" "\
-Major mode for editing terraform configuration file
+(autoload 'terraform-mode "terraform-mode"
+"Major mode for editing terraform configuration file
 
-(fn)" t)
+In addition to any hooks its parent mode `hcl-mode' might have run,
+this mode runs the hook `terraform-mode-hook', as the final or
+penultimate step during initialization.
+
+\\{terraform-mode-map}" t)
 (add-to-list 'auto-mode-alist '("\\.t\\(f\\(vars\\)?\\|ofu\\)\\'" . terraform-mode))
 (register-definition-prefixes "terraform-mode" '("terraform-"))
 

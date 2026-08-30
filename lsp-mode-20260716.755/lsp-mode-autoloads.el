@@ -77,8 +77,8 @@
 
 ;;; Generated autoloads from lsp-clangd.el
 
-(autoload 'lsp-cpp-flycheck-clang-tidy-error-explainer "lsp-clangd" "\
-Explain a clang-tidy ERROR by scraping documentation from llvm.org.
+(autoload 'lsp-cpp-flycheck-clang-tidy-error-explainer "lsp-clangd"
+"Explain a clang-tidy ERROR by scraping documentation from llvm.org.
 
 (fn ERROR)")
 (register-definition-prefixes "lsp-clangd" '("lsp-c"))
@@ -86,12 +86,12 @@ Explain a clang-tidy ERROR by scraping documentation from llvm.org.
 
 ;;; Generated autoloads from lsp-clojure.el
 
-(autoload 'lsp-clojure-show-test-tree "lsp-clojure" "\
-Show a test tree and focus on it if IGNORE-FOCUS? is nil.
+(autoload 'lsp-clojure-show-test-tree "lsp-clojure"
+"Show a test tree and focus on it if IGNORE-FOCUS? is nil.
 
 (fn IGNORE-FOCUS?)" t)
-(autoload 'lsp-clojure-show-project-tree "lsp-clojure" "\
-Show a project tree with source-paths and dependencies.
+(autoload 'lsp-clojure-show-project-tree "lsp-clojure"
+"Show a project tree with source-paths and dependencies.
 Focus on it if IGNORE-FOCUS? is nil.
 
 (fn IGNORE-FOCUS?)" t)
@@ -106,26 +106,26 @@ Focus on it if IGNORE-FOCUS? is nil.
 ;;; Generated autoloads from lsp-cobol.el
 
 (add-hook 'cobol-mode-hook #'lsp-cobol-start-ls)
-(autoload 'lsp-cobol-start-ls "lsp-cobol" "\
-Start the COBOL language service." t)
+(autoload 'lsp-cobol-start-ls "lsp-cobol"
+"Start the COBOL language service." t)
 (register-definition-prefixes "lsp-cobol" '("lsp-cobol-"))
 
 
 ;;; Generated autoloads from lsp-completion.el
 
-(define-obsolete-variable-alias 'lsp-prefer-capf 'lsp-completion-provider "\
-lsp-mode 7.0.1")
-(define-obsolete-variable-alias 'lsp-enable-completion-at-point 'lsp-completion-enable "\
-lsp-mode 7.0.1")
-(defvar lsp-completion-enable t "\
-Enable `completion-at-point' integration.")
+(define-obsolete-variable-alias 'lsp-prefer-capf 'lsp-completion-provider
+"lsp-mode 7.0.1")
+(define-obsolete-variable-alias 'lsp-enable-completion-at-point 'lsp-completion-enable
+"lsp-mode 7.0.1")
+(defvar lsp-completion-enable t
+"Enable `completion-at-point' integration.")
 (custom-autoload 'lsp-completion-enable "lsp-completion" t)
-(autoload 'lsp-completion-at-point "lsp-completion" "\
-Get lsp completions.")
-(autoload 'lsp-completion--enable "lsp-completion" "\
-Enable LSP completion support.")
-(autoload 'lsp-completion-mode "lsp-completion" "\
-Toggle LSP completion support.
+(autoload 'lsp-completion-at-point "lsp-completion"
+"Get lsp completions.")
+(autoload 'lsp-completion--enable "lsp-completion"
+"Enable LSP completion support.")
+(autoload 'lsp-completion-mode "lsp-completion"
+"Toggle LSP completion support.
 
 This is a minor mode.  If called interactively, toggle the
 `Lsp-Completion mode' mode.  If the prefix argument is positive, enable
@@ -148,10 +148,10 @@ disabled.
 
 ;;; Generated autoloads from lsp-copilot.el
 
-(autoload 'lsp-copilot-check-status "lsp-copilot" "\
-Checks the status of the Copilot Server" t)
-(autoload 'lsp-copilot-login "lsp-copilot" "\
-Log in with Copilot.
+(autoload 'lsp-copilot-check-status "lsp-copilot"
+"Checks the status of the Copilot Server" t)
+(autoload 'lsp-copilot-login "lsp-copilot"
+"Log in with Copilot.
 
 This function is automatically called during the client initialization if needed" t)
 (register-definition-prefixes "lsp-copilot" '("lsp-copilot-"))
@@ -194,15 +194,15 @@ This function is automatically called during the client initialization if needed
 
 ;;; Generated autoloads from lsp-diagnostics.el
 
-(define-obsolete-variable-alias 'lsp-diagnostic-package 'lsp-diagnostics-provider "\
-lsp-mode 7.0.1")
-(define-obsolete-variable-alias 'lsp-flycheck-default-level 'lsp-diagnostics-flycheck-default-level "\
-lsp-mode 7.0.1")
+(define-obsolete-variable-alias 'lsp-diagnostic-package 'lsp-diagnostics-provider
+"lsp-mode 7.0.1")
+(define-obsolete-variable-alias 'lsp-flycheck-default-level 'lsp-diagnostics-flycheck-default-level
+"lsp-mode 7.0.1")
 (autoload 'lsp-diagnostics-lsp-checker-if-needed "lsp-diagnostics")
-(autoload 'lsp-diagnostics--enable "lsp-diagnostics" "\
-Enable LSP checker support.")
-(autoload 'lsp-diagnostics-mode "lsp-diagnostics" "\
-Toggle LSP diagnostics integration.
+(autoload 'lsp-diagnostics--enable "lsp-diagnostics"
+"Enable LSP checker support.")
+(autoload 'lsp-diagnostics-mode "lsp-diagnostics"
+"Toggle LSP diagnostics integration.
 
 This is a minor mode.  If called interactively, toggle the
 `Lsp-Diagnostics mode' mode.  If the prefix argument is positive, enable
@@ -225,16 +225,16 @@ disabled.
 
 ;;; Generated autoloads from lsp-dired.el
 
-(defvar lsp-dired-mode nil "\
-Non-nil if Lsp-Dired mode is enabled.
+(defvar lsp-dired-mode nil
+"Non-nil if Lsp-Dired mode is enabled.
 See the `lsp-dired-mode' command
 for a description of this minor mode.
 Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
 or call the function `lsp-dired-mode'.")
 (custom-autoload 'lsp-dired-mode "lsp-dired" nil)
-(autoload 'lsp-dired-mode "lsp-dired" "\
-Display `lsp-mode' icons for each file in a dired buffer.
+(autoload 'lsp-dired-mode "lsp-dired"
+"Display `lsp-mode' icons for each file in a dired buffer.
 
 This is a global minor mode.  If called interactively, toggle the
 `Lsp-Dired mode' mode.  If the prefix argument is positive, enable the
@@ -316,8 +316,8 @@ disabled.
 
 ;;; Generated autoloads from lsp-fsharp.el
 
-(autoload 'lsp-fsharp--workspace-load "lsp-fsharp" "\
-Load all of the provided PROJECTS.
+(autoload 'lsp-fsharp--workspace-load "lsp-fsharp"
+"Load all of the provided PROJECTS.
 
 (fn PROJECTS)")
 (register-definition-prefixes "lsp-fsharp" '("lsp-fsharp-"))
@@ -370,8 +370,8 @@ Load all of the provided PROJECTS.
 
 ;;; Generated autoloads from lsp-headerline.el
 
-(autoload 'lsp-headerline-breadcrumb-mode "lsp-headerline" "\
-Toggle breadcrumb on headerline.
+(autoload 'lsp-headerline-breadcrumb-mode "lsp-headerline"
+"Toggle breadcrumb on headerline.
 
 This is a minor mode.  If called interactively, toggle the
 `Lsp-Headerline-Breadcrumb mode' mode.  If the prefix argument is
@@ -389,12 +389,12 @@ The mode's hook is called both when the mode is enabled and when it is
 disabled.
 
 (fn &optional ARG)" t)
-(autoload 'lsp-breadcrumb-go-to-symbol "lsp-headerline" "\
-Go to the symbol on breadcrumb at SYMBOL-POSITION.
+(autoload 'lsp-breadcrumb-go-to-symbol "lsp-headerline"
+"Go to the symbol on breadcrumb at SYMBOL-POSITION.
 
 (fn SYMBOL-POSITION)" t)
-(autoload 'lsp-breadcrumb-narrow-to-symbol "lsp-headerline" "\
-Narrow to the symbol range on breadcrumb at SYMBOL-POSITION.
+(autoload 'lsp-breadcrumb-narrow-to-symbol "lsp-headerline"
+"Narrow to the symbol range on breadcrumb at SYMBOL-POSITION.
 
 (fn SYMBOL-POSITION)" t)
 (register-definition-prefixes "lsp-headerline" '("lsp-headerline-"))
@@ -417,8 +417,8 @@ Narrow to the symbol range on breadcrumb at SYMBOL-POSITION.
 
 ;;; Generated autoloads from lsp-ido.el
 
-(autoload 'lsp-ido-workspace-symbol "lsp-ido" "\
-`ido' for lsp workspace/symbol.
+(autoload 'lsp-ido-workspace-symbol "lsp-ido"
+"`ido' for lsp workspace/symbol.
 When called with prefix ARG the default selection will be symbol at point.
 
 (fn ARG)" t)
@@ -432,40 +432,40 @@ When called with prefix ARG the default selection will be symbol at point.
 
 ;;; Generated autoloads from lsp-iedit.el
 
-(autoload 'lsp-iedit-highlights "lsp-iedit" "\
-Start an `iedit' operation on the documentHighlights at point.
+(autoload 'lsp-iedit-highlights "lsp-iedit"
+"Start an `iedit' operation on the documentHighlights at point.
 This can be used as a primitive `lsp-rename' replacement if the
 language server doesn't support renaming.
 
 See also `lsp-enable-symbol-highlighting'." t)
-(autoload 'lsp-iedit-linked-ranges "lsp-iedit" "\
-Start an `iedit' for `textDocument/linkedEditingRange'" t)
-(autoload 'lsp-evil-multiedit-highlights "lsp-iedit" "\
-Start an `evil-multiedit' operation on the documentHighlights at point.
+(autoload 'lsp-iedit-linked-ranges "lsp-iedit"
+"Start an `iedit' for `textDocument/linkedEditingRange'" t)
+(autoload 'lsp-evil-multiedit-highlights "lsp-iedit"
+"Start an `evil-multiedit' operation on the documentHighlights at point.
 This can be used as a primitive `lsp-rename' replacement if the
 language server doesn't support renaming.
 
 See also `lsp-enable-symbol-highlighting'." t)
-(autoload 'lsp-evil-multiedit-linked-ranges "lsp-iedit" "\
-Start an `evil-multiedit' for `textDocument/linkedEditingRange'" t)
-(autoload 'lsp-evil-state-highlights "lsp-iedit" "\
-Start `iedit-mode'. for `textDocument/documentHighlight'" t)
-(autoload 'lsp-evil-state-linked-ranges "lsp-iedit" "\
-Start `iedit-mode'. for `textDocument/linkedEditingRange'" t)
+(autoload 'lsp-evil-multiedit-linked-ranges "lsp-iedit"
+"Start an `evil-multiedit' for `textDocument/linkedEditingRange'" t)
+(autoload 'lsp-evil-state-highlights "lsp-iedit"
+"Start `iedit-mode'. for `textDocument/documentHighlight'" t)
+(autoload 'lsp-evil-state-linked-ranges "lsp-iedit"
+"Start `iedit-mode'. for `textDocument/linkedEditingRange'" t)
 (register-definition-prefixes "lsp-iedit" '("lsp-iedit--on-ranges"))
 
 
 ;;; Generated autoloads from lsp-inline-completion.el
 
-(autoload 'lsp-inline-completion-display "lsp-inline-completion" "\
-Displays the inline completions overlay.
+(autoload 'lsp-inline-completion-display "lsp-inline-completion"
+"Displays the inline completions overlay.
 
 (fn &optional IMPLICIT)" t)
-(defvar lsp-inline-completion-enable t "\
-If non-nil it will enable inline completions on idle.")
+(defvar lsp-inline-completion-enable t
+"If non-nil it will enable inline completions on idle.")
 (custom-autoload 'lsp-inline-completion-enable "lsp-inline-completion" t)
-(autoload 'lsp-inline-completion-mode "lsp-inline-completion" "\
-Mode automatically displaying inline completions.
+(autoload 'lsp-inline-completion-mode "lsp-inline-completion"
+"Mode automatically displaying inline completions.
 
 This is a minor mode.  If called interactively, toggle the
 `Lsp-Inline-Completion mode' mode.  If the prefix argument is positive,
@@ -483,8 +483,8 @@ disabled.
 
 (fn &optional ARG)" t)
 (add-hook 'lsp-configure-hook (lambda nil (when (and lsp-inline-completion-enable (lsp-feature? "textDocument/inlineCompletion")) (lsp-inline-completion-mode))))
-(autoload 'lsp-inline-completion-company-integration-mode "lsp-inline-completion" "\
-Minor mode to be used when company mode is active with lsp-inline-completion-mode.
+(autoload 'lsp-inline-completion-company-integration-mode "lsp-inline-completion"
+"Minor mode to be used when company mode is active with lsp-inline-completion-mode.
 
 This is a minor mode.  If called interactively, toggle the
 `Lsp-Inline-Completion-Company-Integration mode' mode.  If the prefix
@@ -542,14 +542,14 @@ disabled.
 
 ;;; Generated autoloads from lsp-lens.el
 
-(autoload 'lsp-lens--enable "lsp-lens" "\
-Enable lens mode.")
-(autoload 'lsp-lens-show "lsp-lens" "\
-Display lenses in the buffer." t)
-(autoload 'lsp-lens-hide "lsp-lens" "\
-Delete all lenses." t)
-(autoload 'lsp-lens-mode "lsp-lens" "\
-Toggle code-lens overlays.
+(autoload 'lsp-lens--enable "lsp-lens"
+"Enable lens mode.")
+(autoload 'lsp-lens-show "lsp-lens"
+"Display lenses in the buffer." t)
+(autoload 'lsp-lens-hide "lsp-lens"
+"Delete all lenses." t)
+(autoload 'lsp-lens-mode "lsp-lens"
+"Toggle code-lens overlays.
 
 This is a minor mode.  If called interactively, toggle the `Lsp-Lens
 mode' mode.  If the prefix argument is positive, enable the mode, and if
@@ -566,15 +566,15 @@ The mode's hook is called both when the mode is enabled and when it is
 disabled.
 
 (fn &optional ARG)" t)
-(autoload 'lsp-avy-lens "lsp-lens" "\
-Click lsp lens using `avy' package." t)
+(autoload 'lsp-avy-lens "lsp-lens"
+"Click lsp lens using `avy' package." t)
 (register-definition-prefixes "lsp-lens" '("lsp-"))
 
 
 ;;; Generated autoloads from lsp-lisp.el
 
-(autoload 'lsp-lisp-alive-start-ls "lsp-lisp" "\
-Start the alive-lsp." t)
+(autoload 'lsp-lisp-alive-start-ls "lsp-lisp"
+"Start the alive-lsp." t)
 (register-definition-prefixes "lsp-lisp" '("lsp-lisp-a"))
 
 
@@ -624,41 +624,41 @@ Start the alive-lsp." t)
 (put 'lsp-file-watch-ignored-directories 'safe-local-variable 'lsp--string-listp)
 (put 'lsp-file-watch-ignored-files 'safe-local-variable 'lsp--string-listp)
 (put 'lsp-file-watch-threshold 'safe-local-variable (lambda (i) (or (numberp i) (not i))))
-(autoload 'lsp--string-listp "lsp-mode" "\
-Return t if all elements of SEQUENCE are strings, else nil.
+(autoload 'lsp--string-listp "lsp-mode"
+"Return t if all elements of SEQUENCE are strings, else nil.
 
 (fn SEQUENCE)")
-(autoload 'lsp-load-vscode-workspace "lsp-mode" "\
-Load vscode workspace from FILE
+(autoload 'lsp-load-vscode-workspace "lsp-mode"
+"Load vscode workspace from FILE
 
 (fn FILE)" t)
-(autoload 'lsp-save-vscode-workspace "lsp-mode" "\
-Save vscode workspace to FILE
+(autoload 'lsp-save-vscode-workspace "lsp-mode"
+"Save vscode workspace to FILE
 
 (fn FILE)" t)
-(autoload 'lsp-install-server "lsp-mode" "\
-Interactively install or re-install server.
+(autoload 'lsp-install-server "lsp-mode"
+"Interactively install or re-install server.
 When prefix UPDATE? is t force installation even if the server is present.
 
 (fn UPDATE? &optional SERVER-ID)" t)
-(autoload 'lsp-uninstall-server "lsp-mode" "\
-Delete a LSP server from `lsp-server-install-dir'.
+(autoload 'lsp-uninstall-server "lsp-mode"
+"Delete a LSP server from `lsp-server-install-dir'.
 
 (fn DIR)" t)
-(autoload 'lsp-uninstall-servers "lsp-mode" "\
-Uninstall all installed servers." t)
-(autoload 'lsp-update-server "lsp-mode" "\
-Interactively update (reinstall) a server.
+(autoload 'lsp-uninstall-servers "lsp-mode"
+"Uninstall all installed servers." t)
+(autoload 'lsp-update-server "lsp-mode"
+"Interactively update (reinstall) a server.
 
 (fn &optional SERVER-ID)" t)
-(autoload 'lsp-update-servers "lsp-mode" "\
-Update (reinstall) all installed servers." t)
-(autoload 'lsp-ensure-server "lsp-mode" "\
-Ensure server SERVER-ID
+(autoload 'lsp-update-servers "lsp-mode"
+"Update (reinstall) all installed servers." t)
+(autoload 'lsp-ensure-server "lsp-mode"
+"Ensure server SERVER-ID
 
 (fn SERVER-ID)")
-(autoload 'lsp "lsp-mode" "\
-Entry point for the server startup.
+(autoload 'lsp "lsp-mode"
+"Entry point for the server startup.
 When ARG is t the lsp mode will start new language server even if
 there is language server which can handle current language. When
 ARG is nil current file will be opened in multi folder language
@@ -666,12 +666,12 @@ server if there is such. When `lsp' is called with prefix
 argument ask the user to select which language server to start.
 
 (fn &optional ARG)" t)
-(autoload 'lsp-deferred "lsp-mode" "\
-Entry point that defers server startup until buffer is visible.
+(autoload 'lsp-deferred "lsp-mode"
+"Entry point that defers server startup until buffer is visible.
 `lsp-deferred' will wait until the buffer is visible before invoking `lsp'.
 This avoids overloading the server with many files when starting Emacs.")
-(autoload 'lsp-start-plain "lsp-mode" "\
-Start `lsp-mode' using minimal configuration using the latest `melpa' version
+(autoload 'lsp-start-plain "lsp-mode"
+"Start `lsp-mode' using minimal configuration using the latest `melpa' version
 of the packages.
 
 In case the major-mode that you are using for " t)
@@ -680,10 +680,10 @@ In case the major-mode that you are using for " t)
 
 ;;; Generated autoloads from lsp-modeline.el
 
-(define-obsolete-variable-alias 'lsp-diagnostics-modeline-scope 'lsp-modeline-diagnostics-scope "\
-lsp-mode 7.0.1")
-(autoload 'lsp-modeline-code-actions-mode "lsp-modeline" "\
-Toggle code actions on modeline.
+(define-obsolete-variable-alias 'lsp-diagnostics-modeline-scope 'lsp-modeline-diagnostics-scope
+"lsp-mode 7.0.1")
+(autoload 'lsp-modeline-code-actions-mode "lsp-modeline"
+"Toggle code actions on modeline.
 
 This is a minor mode.  If called interactively, toggle the
 `Lsp-Modeline-Code-Actions mode' mode.  If the prefix argument is
@@ -702,8 +702,8 @@ disabled.
 
 (fn &optional ARG)" t)
 (define-obsolete-function-alias 'lsp-diagnostics-modeline-mode 'lsp-modeline-diagnostics-mode "lsp-mode 7.0.1")
-(autoload 'lsp-modeline-diagnostics-mode "lsp-modeline" "\
-Toggle diagnostics modeline.
+(autoload 'lsp-modeline-diagnostics-mode "lsp-modeline"
+"Toggle diagnostics modeline.
 
 This is a minor mode.  If called interactively, toggle the
 `Lsp-Modeline-Diagnostics mode' mode.  If the prefix argument is
@@ -721,8 +721,8 @@ The mode's hook is called both when the mode is enabled and when it is
 disabled.
 
 (fn &optional ARG)" t)
-(autoload 'lsp-modeline-workspace-status-mode "lsp-modeline" "\
-Toggle workspace status on modeline.
+(autoload 'lsp-modeline-workspace-status-mode "lsp-modeline"
+"Toggle workspace status on modeline.
 
 This is a minor mode.  If called interactively, toggle the
 `Lsp-Modeline-Workspace-Status mode' mode.  If the prefix argument is
@@ -920,8 +920,8 @@ disabled.
 
 ;;; Generated autoloads from lsp-semantic-tokens.el
 
-(defvar-local semantic-token-modifier-cache (make-hash-table) "\
-A cache of modifier values to the selected fonts.
+(defvar-local semantic-token-modifier-cache (make-hash-table)
+"A cache of modifier values to the selected fonts.
 This allows whole-bitmap lookup instead of checking each bit. The
 expectation is that usage of modifiers will tend to cluster, so
 we will not have the full range of possible usages, hence a
@@ -932,19 +932,19 @@ given workspace/language-server combination.
 
 This cache should be flushed every time any modifier
 configuration changes.")
-(autoload 'lsp--semantic-tokens-initialize-buffer "lsp-semantic-tokens" "\
-Initialize the buffer for semantic tokens.
+(autoload 'lsp--semantic-tokens-initialize-buffer "lsp-semantic-tokens"
+"Initialize the buffer for semantic tokens.
 IS-RANGE-PROVIDER is non-nil when server supports range requests.")
-(autoload 'lsp--semantic-tokens-initialize-workspace "lsp-semantic-tokens" "\
-Initialize semantic tokens for WORKSPACE.
+(autoload 'lsp--semantic-tokens-initialize-workspace "lsp-semantic-tokens"
+"Initialize semantic tokens for WORKSPACE.
 
 (fn WORKSPACE)")
-(autoload 'lsp-semantic-tokens--warn-about-deprecated-setting "lsp-semantic-tokens" "\
-Warn about deprecated semantic highlighting variable.")
-(autoload 'lsp-semantic-tokens--enable "lsp-semantic-tokens" "\
-Enable semantic tokens mode.")
-(autoload 'lsp-semantic-tokens-mode "lsp-semantic-tokens" "\
-Toggle semantic-tokens support.
+(autoload 'lsp-semantic-tokens--warn-about-deprecated-setting "lsp-semantic-tokens"
+"Warn about deprecated semantic highlighting variable.")
+(autoload 'lsp-semantic-tokens--enable "lsp-semantic-tokens"
+"Enable semantic tokens mode.")
+(autoload 'lsp-semantic-tokens-mode "lsp-semantic-tokens"
+"Toggle semantic-tokens support.
 
 This is a minor mode.  If called interactively, toggle the
 `Lsp-Semantic-Tokens mode' mode.  If the prefix argument is positive,
@@ -1011,14 +1011,14 @@ disabled.
 
 ;;; Generated autoloads from lsp-tailwindcss.el
 
-(autoload 'lsp-tailwindcss-rustywind "lsp-tailwindcss" "\
-[Experimental] Sort tailwindcss class name using rustywind." t)
-(autoload 'lsp-tailwindcss-rustywind-before-save "lsp-tailwindcss" "\
-[Experimental] Run rustywind when saving buffer.
+(autoload 'lsp-tailwindcss-rustywind "lsp-tailwindcss"
+"[Experimental] Sort tailwindcss class name using rustywind." t)
+(autoload 'lsp-tailwindcss-rustywind-before-save "lsp-tailwindcss"
+"[Experimental] Run rustywind when saving buffer.
 By adding this to `before-save-hook', it only runs when
 lsp-tailwindcss can be activated, see `lsp-tailwindcss--activate-p'.")
-(autoload 'lsp-tailwindcss-installed-server-version "lsp-tailwindcss" "\
-Get the installed version of tailwindcss language server." t)
+(autoload 'lsp-tailwindcss-installed-server-version "lsp-tailwindcss"
+"Get the installed version of tailwindcss language server." t)
 (register-definition-prefixes "lsp-tailwindcss" '("lsp-tailwindcss-"))
 
 

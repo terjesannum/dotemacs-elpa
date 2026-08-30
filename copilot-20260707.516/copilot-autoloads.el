@@ -11,20 +11,20 @@
 
 ;;; Generated autoloads from copilot.el
 
-(autoload 'copilot-install-server-native "copilot" "\
-Install the Copilot server using native binaries (no npm required)." t)
-(autoload 'copilot-install-server "copilot" "\
-Interactively install server.
+(autoload 'copilot-install-server-native "copilot"
+"Install the Copilot server using native binaries (no npm required)." t)
+(autoload 'copilot-install-server "copilot"
+"Interactively install server.
 When npm is available, install using npm.  Otherwise, fall back to
 downloading precompiled native binaries from the npm registry." t)
-(autoload 'copilot-uninstall-server "copilot" "\
-Delete a Copilot server from `copilot-install-dir'." t)
-(autoload 'copilot-reinstall-server "copilot" "\
-Interactively re-install server." t)
-(autoload 'copilot-complete "copilot" "\
-Complete at the current point." t)
-(autoload 'copilot-mode "copilot" "\
-Minor mode for Copilot.
+(autoload 'copilot-uninstall-server "copilot"
+"Delete a Copilot server from `copilot-install-dir'." t)
+(autoload 'copilot-reinstall-server "copilot"
+"Interactively re-install server." t)
+(autoload 'copilot-complete "copilot"
+"Complete at the current point." t)
+(autoload 'copilot-mode "copilot"
+"Minor mode for Copilot.
 
 This is a minor mode.  If called interactively, toggle the `Copilot
 mode' mode.  If the prefix argument is positive, enable the mode, and if
@@ -40,29 +40,27 @@ evaluate the variable `copilot-mode'.
 The mode's hook is called both when the mode is enabled and when it is
 disabled.
 
-\\{copilot-mode-map}
-
 (fn &optional ARG)" t)
 (put 'global-copilot-mode 'globalized-minor-mode t)
-(defvar global-copilot-mode nil "\
-Non-nil if Global Copilot mode is enabled.
+(defvar global-copilot-mode nil
+"Non-nil if Global Copilot mode is enabled.
 See the `global-copilot-mode' command
 for a description of this minor mode.
 Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
 or call the function `global-copilot-mode'.")
 (custom-autoload 'global-copilot-mode "copilot" nil)
-(autoload 'global-copilot-mode "copilot" "\
-Toggle Copilot mode in all buffers.
+(autoload 'global-copilot-mode "copilot"
+"Toggle Copilot mode in many buffers.
+Specifically, Copilot mode is enabled in all buffers where
+`copilot-turn-on-unless-buffer-read-only' would do it.
+
 With prefix ARG, enable Global Copilot mode if ARG is positive;
 otherwise, disable it.
 
 If called from Lisp, toggle the mode if ARG is `toggle'.
 Enable the mode if ARG is nil, omitted, or is a positive number.
 Disable the mode if ARG is a negative number.
-
-Copilot mode is enabled in all buffers where
-`copilot-turn-on-unless-buffer-read-only' would do it.
 
 See `copilot-mode' for more information on Copilot mode.
 
@@ -77,8 +75,8 @@ See `copilot-mode' for more information on Copilot mode.
 
 ;;; Generated autoloads from copilot-chat.el
 
-(autoload 'copilot-chat-select-mode "copilot-chat" "\
-Interactively select the Copilot Chat mode.
+(autoload 'copilot-chat-select-mode "copilot-chat"
+"Interactively select the Copilot Chat mode.
 Modes (such as `Ask', `Agent', and `InlineAgent', plus any custom
 project modes) are fetched from the server.  `Agent' and `InlineAgent'
 are agent-kind modes that let Copilot run tools; `InlineAgent' uses a
@@ -87,29 +85,29 @@ restricted tool set aimed at inline editing.
 The selection takes effect on the next new conversation, since the mode
 is fixed when a conversation is created (start one by resetting the chat
 with `copilot-chat-reset' or sending a message in a fresh chat)." t)
-(autoload 'copilot-chat-add-file-reference "copilot-chat" "\
-Attach FILE as context for the next Copilot Chat message.
+(autoload 'copilot-chat-add-file-reference "copilot-chat"
+"Attach FILE as context for the next Copilot Chat message.
 
 (fn FILE)" t)
-(autoload 'copilot-chat-add-region-reference "copilot-chat" "\
-Attach the region between START and END as context for the next message.
+(autoload 'copilot-chat-add-region-reference "copilot-chat"
+"Attach the region between START and END as context for the next message.
 The context points at the current file with the region's range.
 
 (fn START END)" t)
-(autoload 'copilot-chat-clear-references "copilot-chat" "\
-Drop the context pending for the next Copilot Chat message." t)
-(autoload 'copilot-chat-restore "copilot-chat" "\
-Restore the saved chat transcript for the current workspace.
+(autoload 'copilot-chat-clear-references "copilot-chat"
+"Drop the context pending for the next Copilot Chat message." t)
+(autoload 'copilot-chat-restore "copilot-chat"
+"Restore the saved chat transcript for the current workspace.
 Render the saved conversation in the chat buffer without contacting
 the server; the next message starts a new conversation that replays
 the saved turns first, so Copilot answers with the full context.
 Signal a `user-error' when there is no saved history." t)
-(autoload 'copilot-chat-clear-history "copilot-chat" "\
-Delete the saved chat history file for the current workspace.
+(autoload 'copilot-chat-clear-history "copilot-chat"
+"Delete the saved chat history file for the current workspace.
 The conversation in the chat buffer is left alone; this only removes
 the file `copilot-chat-restore' would read." t)
-(autoload 'copilot-chat-insert-commit-message "copilot-chat" "\
-Generate a commit message from the staged diff and insert it at point.
+(autoload 'copilot-chat-insert-commit-message "copilot-chat"
+"Generate a commit message from the staged diff and insert it at point.
 Meant to be called from a commit message buffer (e.g. Magit's
 COMMIT_EDITMSG), but works from any buffer inside a git repository.
 
@@ -119,8 +117,8 @@ instructions.  On a server too old to provide it, fall back to a one-shot
 chat driven by `copilot-chat-commit-message-prompt'.  Either way the
 request runs outside the chat panel and does not disturb an ongoing
 conversation, and the reply is inserted asynchronously at point." t)
-(autoload 'copilot-chat-rewrite "copilot-chat" "\
-Rewrite the region between START and END according to INSTRUCTION.
+(autoload 'copilot-chat-rewrite "copilot-chat"
+"Rewrite the region between START and END according to INSTRUCTION.
 The region's code is sent to Copilot with INSTRUCTION (read from the
 minibuffer when called interactively) and the buffer's language.  The
 reply is previewed as a diff against the region and applied only after
@@ -131,8 +129,8 @@ the chat panel and does not disturb an ongoing chat conversation; cancel
 it with `copilot-chat-stop'.
 
 (fn START END INSTRUCTION)" t)
-(autoload 'copilot-chat-review-changes "copilot-chat" "\
-Run Copilot's native code review over the uncommitted diff.
+(autoload 'copilot-chat-review-changes "copilot-chat"
+"Run Copilot's native code review over the uncommitted diff.
 Collect the working tree's staged and unstaged edits against HEAD and
 send them to the language server's `copilot/codeReview/reviewChanges'
 method, the reviewer behind GitHub's Copilot Code Review.  The comments
@@ -142,8 +140,8 @@ one) are rendered in the chat buffer.
 Signal a `user-error' when there is nothing to review; when the account
 has no access to Copilot Code Review, the server's error is shown in
 the chat buffer instead." t)
-(autoload 'copilot-chat-review-region "copilot-chat" "\
-Review the region between START and END with Copilot's native code review.
+(autoload 'copilot-chat-review-region "copilot-chat"
+"Review the region between START and END with Copilot's native code review.
 Unlike `copilot-chat-review', which asks the chat model for prose
 feedback, this sends the selection (widened to whole lines) to the
 language server's dedicated `copilot/codeReview/reviewSnippets' method
@@ -151,19 +149,19 @@ and renders the structured comments it returns (file, line, message,
 and suggested change) in the chat buffer.
 
 (fn START END)" t)
-(autoload 'copilot-chat "copilot-chat" "\
-Open Copilot Chat and send MESSAGE.
+(autoload 'copilot-chat "copilot-chat"
+"Open Copilot Chat and send MESSAGE.
 If a conversation already exists, send as a follow-up turn.
 Otherwise, create a new conversation.
 
 (fn MESSAGE)" t)
-(autoload 'copilot-chat-send "copilot-chat" "\
-Send MESSAGE in the current Copilot Chat.
+(autoload 'copilot-chat-send "copilot-chat"
+"Send MESSAGE in the current Copilot Chat.
 When called interactively, prompt for the message.
 
 (fn MESSAGE)" t)
-(autoload 'copilot-chat-compose "copilot-chat" "\
-Draft a Copilot Chat message in a dedicated compose buffer.
+(autoload 'copilot-chat-compose "copilot-chat"
+"Draft a Copilot Chat message in a dedicated compose buffer.
 Pop a writable buffer where you can compose a multi-line message with
 the usual editing and yank commands.
 \\<copilot-chat--tool-edit-keymap>Send it with \\[exit-recursive-edit],
@@ -171,48 +169,48 @@ or cancel with \\[abort-recursive-edit].  The message is routed through
 `copilot-chat', so it starts a new conversation when none exists yet and
 is sent as a follow-up turn otherwise.  Empty or whitespace-only input
 is not sent." t)
-(autoload 'copilot-chat-display "copilot-chat" "\
-Display the existing Copilot Chat buffer without sending a message.
+(autoload 'copilot-chat-display "copilot-chat"
+"Display the existing Copilot Chat buffer without sending a message.
 Signal a `user-error' when no chat buffer exists yet, since there is
 nothing to show; start a conversation with `copilot-chat' first." t)
-(autoload 'copilot-chat-send-region "copilot-chat" "\
-Send the region between START and END as context with an optional PROMPT.
+(autoload 'copilot-chat-send-region "copilot-chat"
+"Send the region between START and END as context with an optional PROMPT.
 
 (fn START END &optional PROMPT)" t)
-(autoload 'copilot-chat-task "copilot-chat" "\
-Send the region (or the defun at point) to Copilot Chat for TASK.
+(autoload 'copilot-chat-task "copilot-chat"
+"Send the region (or the defun at point) to Copilot Chat for TASK.
 TASK is a key of `copilot-chat-task-prompts', whose prompt is sent
 along with the code.  Interactively, pick the task with completion.
 The answer streams into the regular chat buffer.
 
 (fn TASK)" t)
-(autoload 'copilot-chat-review "copilot-chat" "\
-Ask Copilot Chat to review the region or the defun at point." t)
-(autoload 'copilot-chat-fix "copilot-chat" "\
-Ask Copilot Chat to fix the region or the defun at point." t)
-(autoload 'copilot-chat-doc "copilot-chat" "\
-Ask Copilot Chat to document the region or the defun at point." t)
-(autoload 'copilot-chat-optimize "copilot-chat" "\
-Ask Copilot Chat to optimize the region or the defun at point." t)
-(autoload 'copilot-chat-write-tests "copilot-chat" "\
-Ask Copilot Chat to write a test suite for the region or the defun at point." t)
-(autoload 'copilot-chat-slash-command "copilot-chat" "\
-Choose a Copilot Chat slash command and send it.
+(autoload 'copilot-chat-review "copilot-chat"
+"Ask Copilot Chat to review the region or the defun at point." t)
+(autoload 'copilot-chat-fix "copilot-chat"
+"Ask Copilot Chat to fix the region or the defun at point." t)
+(autoload 'copilot-chat-doc "copilot-chat"
+"Ask Copilot Chat to document the region or the defun at point." t)
+(autoload 'copilot-chat-optimize "copilot-chat"
+"Ask Copilot Chat to optimize the region or the defun at point." t)
+(autoload 'copilot-chat-write-tests "copilot-chat"
+"Ask Copilot Chat to write a test suite for the region or the defun at point." t)
+(autoload 'copilot-chat-slash-command "copilot-chat"
+"Choose a Copilot Chat slash command and send it.
 Slash commands (such as `/explain', `/fix', `/tests', `/doc') are
 fetched from the server.  You can supply optional arguments after the
 command." t)
-(autoload 'copilot-chat-stop "copilot-chat" "\
-Cancel the in-flight request and stop streaming.
+(autoload 'copilot-chat-stop "copilot-chat"
+"Cancel the in-flight request and stop streaming.
 When nothing is streaming in the chat buffer, cancel any pending
 one-shot request (e.g. `copilot-chat-insert-commit-message') instead;
 only when there is nothing to cancel at all, reset the conversation." t)
-(autoload 'copilot-chat-reset "copilot-chat" "\
-Destroy the current conversation and clear the chat buffer.
+(autoload 'copilot-chat-reset "copilot-chat"
+"Destroy the current conversation and clear the chat buffer.
 The session's turn log and any pending restored turns are cleared as
 well; the saved history file on disk, if any, is left untouched (see
 `copilot-chat-clear-history')." t)
-(autoload 'copilot-chat-apply-preset "copilot-chat" "\
-Apply the Copilot Chat preset named NAME from `copilot-chat-presets'.
+(autoload 'copilot-chat-apply-preset "copilot-chat"
+"Apply the Copilot Chat preset named NAME from `copilot-chat-presets'.
 A preset is a plist of settings; each present key sets its variable
 (`:model' sets `copilot-chat-model', `:agent-mode' sets
 `copilot-chat-use-agent-mode', `:auto-approve-tools' sets
@@ -240,8 +238,8 @@ keys and an example.
 
 ;;; Generated autoloads from copilot-nes.el
 
-(autoload 'copilot-nes-mode "copilot-nes" "\
-Minor mode for Copilot Next Edit Suggestions.
+(autoload 'copilot-nes-mode "copilot-nes"
+"Minor mode for Copilot Next Edit Suggestions.
 
 NES predicts edits you will want to make next, based on recent
 edit history.  Suggestions can appear anywhere in the file and

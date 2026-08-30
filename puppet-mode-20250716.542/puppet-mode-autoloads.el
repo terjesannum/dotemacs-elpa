@@ -11,10 +11,21 @@
 
 ;;; Generated autoloads from puppet-mode.el
 
-(autoload 'puppet-mode "puppet-mode" "\
+(autoload 'puppet-mode "puppet-mode"
+"Major mode derived from `prog-mode' by `define-derived-mode'.
+It inherits all of the parent's attributes, but has its own keymap,
+abbrev table and syntax table:
 
+  `puppet-mode-map', `puppet-mode-abbrev-table' and
+`puppet-mode-syntax-table'
 
-(fn)" t)
+which more-or-less shadow prog-mode's corresponding tables.
+
+In addition to any hooks its parent mode might have run, this mode
+runs the hook `puppet-mode-hook', as the final or penultimate step
+during initialization.
+
+\\{puppet-mode-map}" t)
 (add-to-list 'auto-mode-alist '("\\.pp\\'" . puppet-mode))
 (register-definition-prefixes "puppet-mode" '("puppet-"))
 

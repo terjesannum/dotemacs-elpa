@@ -11,8 +11,8 @@
 
 ;;; Generated autoloads from company-box.el
 
-(autoload 'company-box-mode "company-box" "\
-Company-box minor mode.
+(autoload 'company-box-mode "company-box"
+"Company-box minor mode.
 
 This is a minor mode.  If called interactively, toggle the `company-box
 mode' mode.  If the prefix argument is positive, enable the mode, and if

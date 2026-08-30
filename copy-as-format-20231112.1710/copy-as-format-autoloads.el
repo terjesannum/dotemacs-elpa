@@ -11,8 +11,8 @@
 
 ;;; Generated autoloads from copy-as-format.el
 
-(autoload 'copy-as-format "copy-as-format" "\
-Copy the current line or active region and add it to the kill ring as
+(autoload 'copy-as-format "copy-as-format"
+"Copy the current line or active region and add it to the kill ring as
 GitHub/Slack/JIRA/HipChat/... formatted code.  Format defaults to
 `copy-as-format-default'.  The buffer will not be modified.
 

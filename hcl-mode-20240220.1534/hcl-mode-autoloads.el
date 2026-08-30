@@ -11,10 +11,14 @@
 
 ;;; Generated autoloads from hcl-mode.el
 
-(autoload 'hcl-mode "hcl-mode" "\
-Major mode for editing hcl configuration file
+(autoload 'hcl-mode "hcl-mode"
+"Major mode for editing hcl configuration file
 
-(fn)" t)
+In addition to any hooks its parent mode `prog-mode' might have run,
+this mode runs the hook `hcl-mode-hook', as the final or penultimate
+step during initialization.
+
+\\{hcl-mode-map}" t)
 (add-to-list 'auto-mode-alist '("\\.hcl\\'" . hcl-mode))
 (add-to-list 'auto-mode-alist '("\\.nomad\\'" . hcl-mode))
 (register-definition-prefixes "hcl-mode" '("hcl-"))

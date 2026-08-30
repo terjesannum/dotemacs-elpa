@@ -11,12 +11,14 @@
 
 ;;; Generated autoloads from logstash-conf.el
 
-(autoload 'logstash-conf-mode "logstash-conf" "\
-Major mode for editing logstash configuration files.
+(autoload 'logstash-conf-mode "logstash-conf"
+"Major mode for editing logstash configuration files.
 
 \\{logstash-conf-mode-map\\}
 
-(fn)" t)
+In addition to any hooks its parent mode `prog-mode' might have run,
+this mode runs the hook `logstash-conf-mode-hook', as the final or
+penultimate step during initialization." t)
 (add-to-list 'auto-mode-alist '("\\.logstash\\'" . logstash-conf-mode))
 (add-to-list 'interpreter-mode-alist '("logstash" . logstash-conf-mode))
 (register-definition-prefixes "logstash-conf" '("logstash-"))

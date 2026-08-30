@@ -11,8 +11,8 @@
 
 ;;; Generated autoloads from pkg-info.el
 
-(autoload 'pkg-info-library-original-version "pkg-info" "\
-Get the original version in the header of LIBRARY.
+(autoload 'pkg-info-library-original-version "pkg-info"
+"Get the original version in the header of LIBRARY.
 
 The original version is stored in the X-Original-Version header.
 This header is added by the MELPA package archive to preserve
@@ -31,8 +31,8 @@ See Info node `(elisp)Library Headers' for more information
 about library headers.
 
 (fn LIBRARY &optional SHOW)" t)
-(autoload 'pkg-info-library-version "pkg-info" "\
-Get the version in the header of LIBRARY.
+(autoload 'pkg-info-library-version "pkg-info"
+"Get the version in the header of LIBRARY.
 
 LIBRARY is either a symbol denoting a named feature, or a library
 name as string.
@@ -46,8 +46,8 @@ See Info node `(elisp)Library Headers' for more information
 about library headers.
 
 (fn LIBRARY &optional SHOW)" t)
-(autoload 'pkg-info-defining-library-original-version "pkg-info" "\
-Get the original version of the library defining FUNCTION.
+(autoload 'pkg-info-defining-library-original-version "pkg-info"
+"Get the original version of the library defining FUNCTION.
 
 The original version is stored in the X-Original-Version header.
 This header is added by the MELPA package archive to preserve
@@ -66,8 +66,8 @@ library was not found, or if the library had no proper version
 header.
 
 (fn FUNCTION &optional SHOW)" t)
-(autoload 'pkg-info-defining-library-version "pkg-info" "\
-Get the version of the library defining FUNCTION.
+(autoload 'pkg-info-defining-library-version "pkg-info"
+"Get the version of the library defining FUNCTION.
 
 If SHOW is non-nil, show the version in mini-buffer.
 
@@ -82,16 +82,16 @@ library was not found, or if the library had no proper version
 header.
 
 (fn FUNCTION &optional SHOW)" t)
-(autoload 'pkg-info-package-version "pkg-info" "\
-Get the version of an installed PACKAGE.
+(autoload 'pkg-info-package-version "pkg-info"
+"Get the version of an installed PACKAGE.
 
 If SHOW is non-nil, show the version in the minibuffer.
 
 Return the version as list, or nil if PACKAGE is not installed.
 
 (fn PACKAGE &optional SHOW)" t)
-(autoload 'pkg-info-version-info "pkg-info" "\
-Obtain complete version info for LIBRARY and PACKAGE.
+(autoload 'pkg-info-version-info "pkg-info"
+"Obtain complete version info for LIBRARY and PACKAGE.
 
 LIBRARY is a symbol denoting a named feature, or a library name
 as string.  PACKAGE is a symbol denoting an ELPA package.  If

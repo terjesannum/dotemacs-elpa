@@ -11,12 +11,12 @@
 
 ;;; Generated autoloads from helm-comint.el
 
-(autoload 'helm-comint-prompts "helm-comint" "\
-Pre-configured `helm' to browse the prompts of the current comint buffer." t)
-(autoload 'helm-comint-prompts-all "helm-comint" "\
-Pre-configured `helm' to browse the prompts of all comint sessions." t)
-(autoload 'helm-comint-input-ring "helm-comint" "\
-Preconfigured `helm' that provide completion of `comint' history." t)
+(autoload 'helm-comint-prompts "helm-comint"
+"Pre-configured `helm' to browse the prompts of the current comint buffer." t)
+(autoload 'helm-comint-prompts-all "helm-comint"
+"Pre-configured `helm' to browse the prompts of all comint sessions." t)
+(autoload 'helm-comint-input-ring "helm-comint"
+"Preconfigured `helm' that provide completion of `comint' history." t)
 (register-definition-prefixes "helm-comint" '("helm-comint-"))
 
 ;;; End of scraped data

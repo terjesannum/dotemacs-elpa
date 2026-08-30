@@ -12,8 +12,8 @@
 ;;; Generated autoloads from js2-imenu-extras.el
 
 (autoload 'js2-imenu-extras-setup "js2-imenu-extras")
-(autoload 'js2-imenu-extras-mode "js2-imenu-extras" "\
-Toggle Imenu support for frameworks and structural patterns.
+(autoload 'js2-imenu-extras-mode "js2-imenu-extras"
+"Toggle Imenu support for frameworks and structural patterns.
 
 This is a minor mode.  If called interactively, toggle the
 `Js2-Imenu-Extras mode' mode.  If the prefix argument is positive,
@@ -35,8 +35,8 @@ disabled.
 
 ;;; Generated autoloads from js2-mode.el
 
-(autoload 'js2-highlight-unused-variables-mode "js2-mode" "\
-Toggle highlight of unused variables.
+(autoload 'js2-highlight-unused-variables-mode "js2-mode"
+"Toggle highlight of unused variables.
 
 This is a minor mode.  If called interactively, toggle the
 `Js2-Highlight-Unused-Variables mode' mode.  If the prefix argument is
@@ -54,8 +54,8 @@ The mode's hook is called both when the mode is enabled and when it is
 disabled.
 
 (fn &optional ARG)" t)
-(autoload 'js2-minor-mode "js2-mode" "\
-Minor mode for running js2 as a background linter.
+(autoload 'js2-minor-mode "js2-mode"
+"Minor mode for running js2 as a background linter.
 
 This allows you to use a different major mode for JavaScript editing,
 such as `js-mode', while retaining the asynchronous error/warning
@@ -75,15 +75,17 @@ evaluate the variable `js2-minor-mode'.
 The mode's hook is called both when the mode is enabled and when it is
 disabled.
 
-\\{js2-minor-mode-map}
-
 (fn &optional ARG)" t)
-(autoload 'js2-mode "js2-mode" "\
-Major mode for editing JavaScript code.
+(autoload 'js2-mode "js2-mode"
+"Major mode for editing JavaScript code.
 
-(fn)" t)
-(autoload 'js2-jsx-mode "js2-mode" "\
-Major mode for editing JSX code in Emacs 26 and earlier.
+In addition to any hooks its parent mode `js-mode' might have run,
+this mode runs the hook `js2-mode-hook', as the final or penultimate
+step during initialization.
+
+\\{js2-mode-map}" t)
+(autoload 'js2-jsx-mode "js2-mode"
+"Major mode for editing JSX code in Emacs 26 and earlier.
 
 To edit JSX code in Emacs 27, use `js-mode' as your major mode
 with `js2-minor-mode' enabled.
@@ -95,7 +97,7 @@ variables (`sgml-basic-offset' et al) locally, like so:
     (setq-local sgml-basic-offset js2-basic-offset))
   (add-hook \\='js2-jsx-mode-hook #\\='set-jsx-indentation)
 
-(fn)" t)
+\\{js2-jsx-mode-map}" t)
 (register-definition-prefixes "js2-mode" '("js2-"))
 
 

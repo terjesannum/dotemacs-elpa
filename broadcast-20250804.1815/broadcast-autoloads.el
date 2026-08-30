@@ -11,8 +11,8 @@
 
 ;;; Generated autoloads from broadcast.el
 
-(autoload 'broadcast-mode "broadcast" "\
-A minor mode for linking buffers together for simultaneous navigation and 
+(autoload 'broadcast-mode "broadcast"
+"A minor mode for linking buffers together for simultaneous navigation and 
 
 editing.
 

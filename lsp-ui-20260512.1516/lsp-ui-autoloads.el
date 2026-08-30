@@ -11,8 +11,8 @@
 
 ;;; Generated autoloads from lsp-ui.el
 
-(autoload 'lsp-ui-mode "lsp-ui" "\
-Toggle language server UI mode on or off.
+(autoload 'lsp-ui-mode "lsp-ui"
+"Toggle language server UI mode on or off.
 ‘lsp-ui-mode’ is a minor mode that contains a series of useful UI
 integrations for ‘lsp-mode’.  With a prefix argument ARG, enable
 language server UI mode if ARG is positive, and disable it

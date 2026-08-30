@@ -11,24 +11,27 @@
 
 ;;; Generated autoloads from restclient.el
 
-(autoload 'restclient-http-send-current "restclient" "\
-Sends current request.
+(autoload 'restclient-http-send-current "restclient"
+"Sends current request.
 Optional argument RAW don't reformat response if t.
 Optional argument STAY-IN-WINDOW do not move focus to response buffer if t.
 Optional argument SUPPRESS-RESPONSE-BUFFER do not display response buffer if t.
 
 (fn &optional RAW STAY-IN-WINDOW SUPPRESS-RESPONSE-BUFFER)" t)
-(autoload 'restclient-http-send-current-raw "restclient" "\
-Sends current request and get raw result.
+(autoload 'restclient-http-send-current-raw "restclient"
+"Sends current request and get raw result.
 (no reformatting or syntax highlight of XML, JSON or images)." t)
-(autoload 'restclient-http-send-current-stay-in-window "restclient" "\
-Send current request and keep focus in request window." t)
-(autoload 'restclient-http-send-current-suppress-response-buffer "restclient" "\
-Send current request but don't show response buffer." t)
-(autoload 'restclient-mode "restclient" "\
-Turn on restclient mode.
+(autoload 'restclient-http-send-current-stay-in-window "restclient"
+"Send current request and keep focus in request window." t)
+(autoload 'restclient-http-send-current-suppress-response-buffer "restclient"
+"Send current request but don't show response buffer." t)
+(autoload 'restclient-mode "restclient"
+"Turn on restclient mode.
 
-(fn)" t)
+This mode runs the hook `restclient-mode-hook', as the final or
+penultimate step during initialization.
+
+\\{restclient-mode-map}" t)
 (register-definition-prefixes "restclient" '("restclient-" "url-"))
 
 ;;; End of scraped data

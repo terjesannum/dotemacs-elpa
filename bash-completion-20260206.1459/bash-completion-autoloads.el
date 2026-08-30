@@ -11,13 +11,13 @@
 
 ;;; Generated autoloads from bash-completion.el
 
-(defun bash-completion-setup nil "\
-Register bash completion for the shell buffer and shell command line.
+(defun bash-completion-setup nil
+"Register bash completion for the shell buffer and shell command line.
 
 This function adds `bash-completion-dynamic-complete' to the completion
 function list of shell mode, `shell-dynamic-complete-functions'." (add-hook 'shell-dynamic-complete-functions #'bash-completion-dynamic-complete))
-(autoload 'bash-completion-dynamic-complete "bash-completion" "\
-Return the completion table for bash command at point.
+(autoload 'bash-completion-dynamic-complete "bash-completion"
+"Return the completion table for bash command at point.
 
 This function is meant to be added into
 `shell-dynamic-complete-functions'.  It uses `comint' to figure
@@ -26,15 +26,15 @@ nil if no completions available.
 
 When doing completion outside of a comint buffer, call
 `bash-completion-dynamic-complete-nocomint' instead.")
-(autoload 'bash-completion-capf-nonexclusive "bash-completion" "\
-Bash completion function for `completion-at-point-functions'.
+(autoload 'bash-completion-capf-nonexclusive "bash-completion"
+"Bash completion function for `completion-at-point-functions'.
 
 Returns the same list as the one returned by
 `bash-completion-dynamic-complete-nocomint' appended with
 (:exclusive no) so that other completion functions are tried
 when bash-completion fails to match the text at point.")
-(autoload 'bash-completion-dynamic-complete-nocomint "bash-completion" "\
-Return completion information for bash command at an arbitrary position.
+(autoload 'bash-completion-dynamic-complete-nocomint "bash-completion"
+"Return completion information for bash command at an arbitrary position.
 
 The bash command to be completed begins at COMP-START in the
 current buffer.  This must specify where the current command
@@ -71,15 +71,15 @@ Returns (list stub-start stub-end completions) with
    returned by `completion-table-dynamic'
 
 (fn COMP-START &optional COMP-POS DYNAMIC-TABLE)")
-(autoload 'bash-completion-refresh "bash-completion" "\
-Does nothing.
+(autoload 'bash-completion-refresh "bash-completion"
+"Does nothing.
 
 This command is obsolete and doesn't do anything useful anymore.
 It used to refresh the copy of the completion table kept in
 memory, but bash-completion.el now uses the completion table of
 the Bash process directly." t)
-(autoload 'bash-completion-reset "bash-completion" "\
-Force the next completion command to start with a fresh BASH process.
+(autoload 'bash-completion-reset "bash-completion"
+"Force the next completion command to start with a fresh BASH process.
 
 This function kills any existing BASH completion process.  This
 way, the next time BASH completion is requested, a new process

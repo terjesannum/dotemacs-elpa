@@ -11,8 +11,8 @@
 
 ;;; Generated autoloads from with-editor.el
 
-(autoload 'with-editor-export-editor "with-editor" "\
-Teach subsequent commands to use current Emacs instance as editor.
+(autoload 'with-editor-export-editor "with-editor"
+"Teach subsequent commands to use current Emacs instance as editor.
 
 Set and export the environment variable ENVVAR, by default \"EDITOR\".
 The value is automatically generated to teach commands to use the
@@ -26,29 +26,29 @@ This command can be used in `shell-mode', `term-mode', `eshell-mode',
 `vterm-mode' and `eat-mode'.
 
 (fn &optional (ENVVAR \"EDITOR\") PROCESS INTERACTIVE)" t)
-(autoload 'with-editor-export-git-editor "with-editor" "\
-Like `with-editor-export-editor' but always set `$GIT_EDITOR'.
+(autoload 'with-editor-export-git-editor "with-editor"
+"Like `with-editor-export-editor' but always set `$GIT_EDITOR'.
 
 PROCESS is only intended for use by `eat-exec-hook'.  When invoked
 interactively, INTERACTIVE is non-nil, which supresses the call to
 \"clear\".
 
 (fn &optional PROCESS INTERACTIVE)" t)
-(autoload 'with-editor-export-hg-editor "with-editor" "\
-Like `with-editor-export-editor' but always set `$HG_EDITOR'.
+(autoload 'with-editor-export-hg-editor "with-editor"
+"Like `with-editor-export-editor' but always set `$HG_EDITOR'.
 
 PROCESS is only intended for use by `eat-exec-hook'.  When invoked
 interactively, INTERACTIVE is non-nil, which supresses the call to
 \"clear\".
 
 (fn &optional PROCESS INTERACTIVE)" t)
-(defvar shell-command-with-editor-mode nil "\
-Non-nil if Shell-Command-With-Editor mode is enabled.
+(defvar shell-command-with-editor-mode nil
+"Non-nil if Shell-Command-With-Editor mode is enabled.
 See the `shell-command-with-editor-mode' command
 for a description of this minor mode.")
 (custom-autoload 'shell-command-with-editor-mode "with-editor" nil)
-(autoload 'shell-command-with-editor-mode "with-editor" "\
-Teach `shell-command' to use current Emacs instance as editor.
+(autoload 'shell-command-with-editor-mode "with-editor"
+"Teach `shell-command' to use current Emacs instance as editor.
 
 Teach `shell-command', and all commands that ultimately call that
 command, to use the current Emacs instance as editor by executing
@@ -80,8 +80,8 @@ The mode's hook is called both when the mode is enabled and when it is
 disabled.
 
 (fn &optional ARG)" t)
-(autoload 'with-editor-async-shell-command "with-editor" "\
-Like `async-shell-command' but with `$EDITOR' set.
+(autoload 'with-editor-async-shell-command "with-editor"
+"Like `async-shell-command' but with `$EDITOR' set.
 
 Execute string \"ENVVAR=CLIENT COMMAND\" in an inferior shell;
 display output, if any.  With a prefix argument prompt for an
@@ -98,8 +98,8 @@ with arguments, or a script which also works over Tramp.
 Also see `async-shell-command' and `shell-command'.
 
 (fn COMMAND &optional OUTPUT-BUFFER ERROR-BUFFER ENVVAR)" t)
-(autoload 'with-editor-shell-command "with-editor" "\
-Like `shell-command' or `with-editor-async-shell-command'.
+(autoload 'with-editor-shell-command "with-editor"
+"Like `shell-command' or `with-editor-async-shell-command'.
 If COMMAND ends with \"&\" behave like the latter,
 else like the former.
 

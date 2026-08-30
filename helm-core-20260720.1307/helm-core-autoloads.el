@@ -11,8 +11,8 @@
 
 ;;; Generated autoloads from helm-core.el
 
-(autoload 'helm-define-multi-key "helm-core" "\
-In KEYMAP, define key sequence KEY for function list FUNCTIONS.
+(autoload 'helm-define-multi-key "helm-core"
+"In KEYMAP, define key sequence KEY for function list FUNCTIONS.
 Each function runs sequentially for each KEY press.
 If DELAY is specified, switch back to initial function of FUNCTIONS list
 after DELAY seconds.
@@ -35,16 +35,15 @@ Waiting more than 2 seconds between key presses switches back to
 executing the first function on the next hit.
 
 (fn KEYMAP KEY FUNCTIONS &optional DELAY)")
-(autoload 'helm-multi-key-defun "helm-core" "\
-Define NAME as a multi-key command running FUNS.
+(autoload 'helm-multi-key-defun "helm-core"
+"Define NAME as a multi-key command running FUNS.
 After DELAY seconds, the FUNS list is reinitialized.
 See `helm-define-multi-key'.
 
 (fn NAME DOCSTRING FUNS &optional DELAY)" nil t)
-(function-put 'helm-multi-key-defun 'lisp-indent-function 2)
 (function-put 'helm-multi-key-defun 'doc-string-elt 2)
-(autoload 'helm-define-key-with-subkeys "helm-core" "\
-Define in MAP a KEY and SUBKEY to COMMAND.
+(autoload 'helm-define-key-with-subkeys "helm-core"
+"Define in MAP a KEY and SUBKEY to COMMAND.
 
 This allows typing KEY to call COMMAND the first time and
 type only SUBKEY on subsequent calls.
@@ -79,12 +78,12 @@ i.e. the loop is not entered after running COMMAND.
 
 (fn MAP KEY SUBKEY COMMAND &optional OTHER-SUBKEYS PROMPT EXIT-FN DELAY DOCSTRING)")
 (function-put 'helm-define-key-with-subkeys 'lisp-indent-function 1)
-(autoload 'helm-configuration "helm-core" "\
-Customize Helm." t)
-(autoload 'helm-debug-open-last-log "helm-core" "\
-Open Helm log file or buffer of last Helm session." t)
-(autoload 'helm "helm-core" "\
-Main function to execute helm sources.
+(autoload 'helm-configuration "helm-core"
+"Customize Helm." t)
+(autoload 'helm-debug-open-last-log "helm-core"
+"Open Helm log file or buffer of last Helm session." t)
+(autoload 'helm "helm-core"
+"Main function to execute helm sources.
 
 PLIST is a list like
 
@@ -211,10 +210,10 @@ supported:
 However, the use of non-keyword args is deprecated.
 
 (fn &key SOURCES INPUT PROMPT RESUME PRESELECT BUFFER KEYMAP DEFAULT HISTORY ALLOW-NEST OTHER-LOCAL-VARS)")
-(autoload 'helm-cycle-resume "helm-core" "\
-Cycle in `helm-buffers' list and resume when waiting more than 1.2s." t)
-(autoload 'helm-other-buffer "helm-core" "\
-Simplified Helm interface with other `helm-buffer'.
+(autoload 'helm-cycle-resume "helm-core"
+"Cycle in `helm-buffers' list and resume when waiting more than 1.2s." t)
+(autoload 'helm-other-buffer "helm-core"
+"Simplified Helm interface with other `helm-buffer'.
 Call `helm' only with SOURCES and BUFFER as args.
 
 (fn SOURCES BUFFER)")
@@ -223,8 +222,8 @@ Call `helm' only with SOURCES and BUFFER as args.
 
 ;;; Generated autoloads from helm-lib.el
 
-(autoload 'helm-add-to-list "helm-lib" "\
-Add or move ELM to the value of VAR at INDEX unless already here.
+(autoload 'helm-add-to-list "helm-lib"
+"Add or move ELM to the value of VAR at INDEX unless already here.
 
 If ELM is member of var value and at index INDEX, return var value
 unchanged, if INDEX value is different move ELM at this `nth' INDEX value.
